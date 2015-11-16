@@ -7,7 +7,7 @@ namespace OOParkingslot
     public class ParkingSlotTest
     {
         [Fact]
-        public void When_Hao_parked_a_car_in_Parkingslot_he_can_pick_up_the_car_away()
+        public void Should_success_When_pickup_the_car_after_park()
         {
             Car carParking = new Car("Hao", "644KVT");
             ParkingSlot parkingSlot = new ParkingSlot();
@@ -17,7 +17,7 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void Should_return_null_when_Hao_pick_up_car_with_an_unexist_token()
+        public void Should_failed_when_token_not_exist()
         {
             string parkingToken = "12345lsjl";
             ParkingSlot parkingSlot = new ParkingSlot();
@@ -26,7 +26,7 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void ParkingToken_should_be_null_when_parkingslot_which_Hao_parking_is_full()
+        public void Should_failed_when_parkingslot_full()
         {
             Car carExist = new Car("Hao", "644KVT");
             ParkingSlot parkingSlot = new ParkingSlot(1);
