@@ -7,47 +7,76 @@ namespace OOParkingslot
     public class ParkingSlotTest
     {
         [Fact]
-        public void Should_success_When_pickup_the_car_after_park()
+        public void Should_return_not_null_When_pickup_the_car_after_park()
         {
-            Car carParking = new Car("Hao", "644KVT");
-            ParkingSlot parkingSlot = new ParkingSlot();
-            string parkingToken = parkingSlot.Parking(carParking);
-            Car carPickup = parkingSlot.PickupCarWith(parkingToken);
-            Assert.Equal(carParking, carPickup);
+            Car carParking = new Car();
+            Parkinglot parkinglot = new Parkinglot();
+
+            string parkingToken = parkinglot.Parking(carParking);
+
+            Car carPickup = parkinglot.PickupCarWith(parkingToken);
+            Assert.NotNull(carPickup);
         }
 
         [Fact]
-        public void Should_failed_when_token_not_exist()
+        public void Should_same_car_When_pickup_the_car_after_park()
         {
-            string parkingToken = "12345lsjl";
-            ParkingSlot parkingSlot = new ParkingSlot();
-            Car carPickup = parkingSlot.PickupCarWith(parkingToken);
-            Assert.Equal(null, carPickup);
+            Car carParking = new Car();
+            Parkinglot parkinglot = new Parkinglot();
+            string parkingToken = parkinglot.Parking(carParking);
+            Car carPickup = parkinglot.PickupCarWith(parkingToken);
+            Assert.Same(carParking, carPickup);
         }
 
         [Fact]
-        public void Should_failed_when_parkingslot_full()
+        public void Should_return_right_car_when_mutiple_cars_in_parkinglot()
         {
-            Car carExist = new Car("Hao", "644KVT");
-            ParkingSlot parkingSlot = new ParkingSlot(1);
-            string parkingTokenExist = parkingSlot.Parking(carExist);
-            Car carParking = new Car("Hao", "645KVT");
-            string parkingToken = parkingSlot.Parking(carParking);
-            Assert.Equal(null, parkingToken);
+            Car bam = new Car();
+            Car qq = new Car();
+            Parkinglot parkinglot = new Parkinglot();
+            parkinglot.Parking(bam);
+
+            var carPickup = parkinglot.PickupCarWith(parkinglot.Parking(qq));
+
+            Assert.Same(qq, carPickup);
         }
 
         [Fact]
-        public void Should_return_carA_when_input_parkingToken_of_carA_Given_carA_and_carB_are_all_in_parkingSlot()
+        public void Should_failed_when_pick_up_car_again()
         {
-            Car carA = new Car("Hao", "644KVT");
-            Car carB = new Car("Hao", "645KVT");
-            ParkingSlot parkingSlot = new ParkingSlot();
-            string parkingTokenCarA = parkingSlot.Parking(carA);
-            string parkingTokenCarB = parkingSlot.Parking(carB);
-            Car carPickupWithTokenA = parkingSlot.PickupCarWith(parkingTokenCarA);
-            Assert.Equal(carA,carPickupWithTokenA);
-            Assert.Equal(null, parkingSlot.GetCarWith(parkingTokenCarA));
-            Assert.Equal(carB, parkingSlot.GetCarWith(parkingTokenCarB));
+            Car carParking = new Car();
+            var parkinglot = new Parkinglot();
+            var parkingToken = parkinglot.Parking(carParking);
+            parkinglot.PickupCarWith(parkingToken);
+
+            var carPickUp = parkinglot.PickupCarWith(parkingToken);
+
+            Assert.Null(carPickUp);
+        }
+
+        [Fact]
+        public void Should_not_get_token_when_parkinglot_is_full()
+        {
+            Car bmw= new Car();
+            var qq = new Car();             
+            var parkinglot = new Parkinglot(1);
+            parkinglot.Parking(bmw);
+
+            var parkingTokenQQ = parkinglot.Parking(qq);
+
+            Assert.Null(parkingTokenQQ);
+        }
+
+        [Fact]
+        public void should_success_when_park_bmw_after_pick_up_bmw()
+        {
+            var bmw = new Car();
+            var parkinglot = new Parkinglot();
+            parkinglot.PickupCarWith(parkinglot.Parking(bmw));
+
+            var parkingToken = parkinglot.Parking(bmw);
+
+            Assert.NotNull(parkingToken);
         }
     }
 }
