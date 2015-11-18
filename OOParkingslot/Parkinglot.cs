@@ -19,7 +19,7 @@ namespace OOParkingslot
 
         public string Parking(Car car)
         {
-            if (garage.Count == maxParking) return null;
+            if (IsFull()) return null;
             var parkingToken = ParkingToken.CreateParkingToken();
             garage.Add(parkingToken, car);
             return parkingToken;
@@ -31,6 +31,11 @@ namespace OOParkingslot
             var car = garage[parkingToken];
             garage.Remove(parkingToken);
             return car;
+        }
+
+        public bool IsFull()
+        {
+            return garage.Count == maxParking;
         }
     }
 
