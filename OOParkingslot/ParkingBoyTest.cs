@@ -5,7 +5,7 @@ namespace OOParkingslot
     public class ParkingBoyTest
     {
         [Fact]
-        public void should_pick_up_car_when_parking_and_parkingboy_has_one_parkinglot()
+        public void should_pick_up_car_when_parkingboy_parked()
         {
             var parkingBoy = new ParkingBoy(new Parkinglot[]{new Parkinglot()});
             
@@ -14,10 +14,20 @@ namespace OOParkingslot
             Assert.NotNull(parkingBoy.Pickupwith(parkingToken));
         }
 
+        public void should_success_when_parkinglota_is_not_full_and_parkinglotB_is_full()
+        {
+            var parkingBoy = new ParkingBoy(new Parkinglot[2] { new Parkinglot(1), new Parkinglot(0) });
+            parkingBoy.Parking(new Car());
+
+            var parkingToken = parkingBoy.Parking(new Car());
+
+            Assert.NotNull(parkingToken);
+        }
+
         [Fact]
         public void should_success_when_parkinglotA_is_full_and_parkinglotB_is_not_full()
         {
-            var parkingBoy = new ParkingBoy(new Parkinglot[2] {new Parkinglot(1), new Parkinglot(2)});
+            var parkingBoy = new ParkingBoy(new Parkinglot[2] {new Parkinglot(0), new Parkinglot(2)});
             parkingBoy.Parking(new Car());
             
             var parkingToken = parkingBoy.Parking(new Car());
@@ -49,36 +59,6 @@ namespace OOParkingslot
             Assert.Same(qq, pickupQq);
         }
 
-    }
 
-    public class ParkingBoy
-    {
-        private Parkinglot[] parkinglots;
-
-        public ParkingBoy(Parkinglot[] parkinglots)
-        {
-            this.parkinglots = parkinglots;
-        }
-
-        public string Parking(Car car)
-        {
-            var count = parkinglots.Length;
-            for (int i = 0; i < count; i++)
-            {
-                if (parkinglots[i].IsFull()) continue;
-                return parkinglots[i].Parking(car);
-            }
-            return null;
-        }
-
-        public Car Pickupwith(string parkingToken)
-        {
-            Car car = null;
-            foreach (var parkinglot in parkinglots)
-            {
-                if ((car = parkinglot.PickupCarWith(parkingToken)) != null) break;
-            }
-            return car;
-        }
     }
 }
