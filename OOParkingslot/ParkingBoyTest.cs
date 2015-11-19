@@ -14,11 +14,11 @@ namespace OOParkingslot
             Assert.NotNull(parkingBoy.Pickupwith(parkingToken));
         }
 
+        [Fact]
         public void should_success_when_parkinglota_is_not_full_and_parkinglotB_is_full()
         {
             var parkingBoy = new ParkingBoy(new Parkinglot[2] { new Parkinglot(1), new Parkinglot(0) });
-            parkingBoy.Parking(new Car());
-
+            
             var parkingToken = parkingBoy.Parking(new Car());
 
             Assert.NotNull(parkingToken);
