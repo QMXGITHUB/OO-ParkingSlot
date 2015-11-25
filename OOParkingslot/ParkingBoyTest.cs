@@ -27,5 +27,17 @@ namespace OOParkingslot
 
             Assert.Same(car, parkinglot.Pick(parkingToken));
         }
+
+        [Fact]
+        public void should_pickup_car_when_there_are_two_parkinglot_parked()
+        {
+            var parkinglot = new Parkinglot();
+            var parkingBoy = new ParkingBoy(new Parkinglot(), parkinglot);
+
+            var car = new Car();
+            var parkingToken = parkinglot.Park(car);
+
+            Assert.Same(car, parkingBoy.Pick(parkingToken));
+        }
     }
 }

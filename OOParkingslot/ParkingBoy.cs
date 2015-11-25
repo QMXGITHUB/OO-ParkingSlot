@@ -2,21 +2,27 @@
 {
     public class ParkingBoy
     {
-        private Parkinglot parkinglot;
+        private Parkinglot[] parkinglots;
 
-        public ParkingBoy(Parkinglot parkinglot)
+        public ParkingBoy(params Parkinglot[] parkinglots)
         {
-            this.parkinglot = parkinglot;
+            this.parkinglots = parkinglots;
         }
 
         public Car Pick(string parkToken)
         {
-            return parkinglot.Pick(parkToken);
+            Car car = null;
+            foreach (var parkinglot in parkinglots)
+            {
+                car = parkinglot.Pick(parkToken);
+                if (car == null) continue;
+            }
+            return car;
         }
 
         public string Park(Car car)
         {
-            return parkinglot.Park(car);
+            return parkinglots[0].Park(car);
         }
     }
 }
