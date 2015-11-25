@@ -13,5 +13,10 @@
         {
             return parkinglot.Pick(parkToken);
         }
+
+        public string Park(Car car)
+        {
+            return parkinglot.Park(car);
+        }
     }
 }
