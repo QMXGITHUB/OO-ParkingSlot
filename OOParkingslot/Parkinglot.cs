@@ -27,7 +27,7 @@ namespace OOParkingslot
 
         public Car PickupCarWith(string parkingToken)
         {
-            if (!garage.ContainsKey(parkingToken)) return null;
+            if (parkingToken == null ||!garage.ContainsKey(parkingToken)) return null;
             var car = garage[parkingToken];
             garage.Remove(parkingToken);
             return car;

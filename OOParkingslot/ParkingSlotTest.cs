@@ -1,40 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using Xunit;
+﻿using Xunit;
 
 namespace OOParkingslot
 {
     public class ParkingSlotTest
     {
         [Fact]
-        public void Should_return_not_null_When_pickup_the_car_after_park()
+        public void should_pickup_right_car_after_the_car_parked()
         {
             Car carParking = new Car();
             Parkinglot parkinglot = new Parkinglot();
 
-            string parkingToken = parkinglot.Parking(carParking);
+            Car carPickup = parkinglot.PickupCarWith(parkinglot.Parking(carParking));
 
-            Car carPickup = parkinglot.PickupCarWith(parkingToken);
-            Assert.NotNull(carPickup);
-        }
-
-        [Fact]
-        public void Should_same_car_When_pickup_the_car_after_park()
-        {
-            Car carParking = new Car();
-            Parkinglot parkinglot = new Parkinglot();
-            string parkingToken = parkinglot.Parking(carParking);
-            Car carPickup = parkinglot.PickupCarWith(parkingToken);
             Assert.Same(carParking, carPickup);
         }
 
         [Fact]
-        public void Should_return_right_car_when_mutiple_cars_in_parkinglot()
+        public void should_pickup_right_car_when_mutiple_cars_in_parkinglot()
         {
-            Car bam = new Car();
             Car qq = new Car();
             Parkinglot parkinglot = new Parkinglot();
-            parkinglot.Parking(bam);
+            parkinglot.Parking(new Car());
 
             var carPickup = parkinglot.PickupCarWith(parkinglot.Parking(qq));
 
@@ -42,11 +28,10 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void Should_failed_when_pick_up_car_again()
+        public void should_not_pickup_car_twice()
         {
-            Car carParking = new Car();
             var parkinglot = new Parkinglot();
-            var parkingToken = parkinglot.Parking(carParking);
+            var parkingToken = parkinglot.Parking(new Car());
             parkinglot.PickupCarWith(parkingToken);
 
             var carPickUp = parkinglot.PickupCarWith(parkingToken);
@@ -55,28 +40,16 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void Should_not_get_token_when_parkinglot_is_full()
+        public void should_not_park_a_car_when_parkinglot_is_full()
         {
-            Car bmw= new Car();
-            var qq = new Car();             
             var parkinglot = new Parkinglot(1);
-            parkinglot.Parking(bmw);
+            parkinglot.Parking(new Car());
 
-            var parkingTokenQQ = parkinglot.Parking(qq);
+            var parkingToken = parkinglot.Parking(new Car());
 
-            Assert.Null(parkingTokenQQ);
-        }
+            var carPickup = parkinglot.PickupCarWith(parkingToken);
 
-        [Fact]
-        public void should_success_when_park_bmw_after_pick_up_bmw()
-        {
-            var bmw = new Car();
-            var parkinglot = new Parkinglot();
-            parkinglot.PickupCarWith(parkinglot.Parking(bmw));
-
-            var parkingToken = parkinglot.Parking(bmw);
-
-            Assert.NotNull(parkingToken);
+            Assert.Null(carPickup);
         }
     }
 }
