@@ -22,7 +22,13 @@
 
         public string Park(Car car)
         {
-            return parkinglots[0].Park(car);
+            string parkingToken = null;
+            foreach (var parkinglot in parkinglots)
+            {
+                parkingToken = parkinglot.Park(car);
+                if (parkingToken != null) break;
+            }
+            return parkingToken;
         }
     }
 }
