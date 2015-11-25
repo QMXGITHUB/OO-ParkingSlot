@@ -10,7 +10,7 @@ namespace OOParkingslot
             Car carParking = new Car();
             Parkinglot parkinglot = new Parkinglot();
 
-            Car carPickup = parkinglot.PickupCarWith(parkinglot.Parking(carParking));
+            Car carPickup = parkinglot.Pick(parkinglot.Park(carParking));
 
             Assert.Same(carParking, carPickup);
         }
@@ -20,9 +20,9 @@ namespace OOParkingslot
         {
             Car qq = new Car();
             Parkinglot parkinglot = new Parkinglot();
-            parkinglot.Parking(new Car());
+            parkinglot.Park(new Car());
 
-            var carPickup = parkinglot.PickupCarWith(parkinglot.Parking(qq));
+            var carPickup = parkinglot.Pick(parkinglot.Park(qq));
 
             Assert.Same(qq, carPickup);
         }
@@ -31,10 +31,10 @@ namespace OOParkingslot
         public void should_not_pickup_car_twice()
         {
             var parkinglot = new Parkinglot();
-            var parkingToken = parkinglot.Parking(new Car());
-            parkinglot.PickupCarWith(parkingToken);
+            var parkingToken = parkinglot.Park(new Car());
+            parkinglot.Pick(parkingToken);
 
-            var carPickUp = parkinglot.PickupCarWith(parkingToken);
+            var carPickUp = parkinglot.Pick(parkingToken);
 
             Assert.Null(carPickUp);
         }
@@ -43,11 +43,11 @@ namespace OOParkingslot
         public void should_not_park_a_car_when_parkinglot_is_full()
         {
             var parkinglot = new Parkinglot(1);
-            parkinglot.Parking(new Car());
+            parkinglot.Park(new Car());
 
-            var parkingToken = parkinglot.Parking(new Car());
+            var parkingToken = parkinglot.Park(new Car());
 
-            var carPickup = parkinglot.PickupCarWith(parkingToken);
+            var carPickup = parkinglot.Pick(parkingToken);
 
             Assert.Null(carPickup);
         }
@@ -56,11 +56,11 @@ namespace OOParkingslot
         public void should_not_pickup_car_with_wrong_parkingToken()
         {
             var parkinglot = new Parkinglot();
-            parkinglot.Parking(new Car());
+            parkinglot.Park(new Car());
 
             var parkingToken = "123324";
 
-            Assert.Null(parkinglot.PickupCarWith(parkingToken));
+            Assert.Null(parkinglot.Pick(parkingToken));
         }
     }
 }

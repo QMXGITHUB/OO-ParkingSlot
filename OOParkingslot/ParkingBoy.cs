@@ -1,4 +1,6 @@
-﻿namespace OOParkingslot
+﻿using System.Linq;
+
+namespace OOParkingslot
 {
     public class ParkingBoy
     {
@@ -11,13 +13,9 @@
 
         public string Parking(Car car)
         {
-            var count = parkinglots.Length;
-            for (int i = 0; i < count; i++)
-            {
-                if (parkinglots[i].IsFull()) continue;
-                return parkinglots[i].Parking(car);
-            }
-            return null;
+            var parkinglot = parkinglots.FirstOrDefault(parkingLot => !parkingLot.IsFull());
+            if (parkinglot == null) return null;
+            return parkinglot.Park(car);
         }
 
         public Car Pickupwith(string parkingToken)
@@ -25,7 +23,7 @@
             Car car = null;
             foreach (var parkinglot in parkinglots)
             {
-                if ((car = parkinglot.PickupCarWith(parkingToken)) != null) break;
+                if ((car = parkinglot.Pick(parkingToken)) != null) break;
             }
             return car;
         }

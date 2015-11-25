@@ -7,29 +7,33 @@ namespace OOParkingslot
     {
         Dictionary<string, Car> garage = new Dictionary<string, Car>();
         private int maxParking;
+        public int availableStallCount { set; get; }
 
         public Parkinglot(int maxParking)
         {
             this.maxParking = maxParking;
+            availableStallCount = maxParking;
         }
 
         public Parkinglot():this(20)
         {
         }
 
-        public string Parking(Car car)
+        public string Park(Car car)
         {
             if (IsFull()) return null;
             var parkingToken = ParkingToken.CreateParkingToken();
             garage.Add(parkingToken, car);
+            availableStallCount = availableStallCount - 1;
             return parkingToken;
         }
 
-        public Car PickupCarWith(string parkingToken)
+        public Car Pick(string parkingToken)
         {
             if (parkingToken == null ||!garage.ContainsKey(parkingToken)) return null;
             var car = garage[parkingToken];
             garage.Remove(parkingToken);
+            availableStallCount = availableStallCount + 1;
             return car;
         }
 
