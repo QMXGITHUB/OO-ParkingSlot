@@ -51,5 +51,16 @@ namespace OOParkingslot
 
             Assert.Null(carPickup);
         }
+
+        [Fact]
+        public void should_not_pickup_car_with_wrong_parkingToken()
+        {
+            var parkinglot = new Parkinglot();
+            parkinglot.Parking(new Car());
+
+            var parkingToken = "123324";
+
+            Assert.Null(parkinglot.PickupCarWith(parkingToken));
+        }
     }
 }
