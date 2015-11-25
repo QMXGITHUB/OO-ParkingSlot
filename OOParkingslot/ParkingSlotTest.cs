@@ -5,14 +5,13 @@ namespace OOParkingslot
     public class ParkingSlotTest
     {
         [Fact]
-        public void should_pickup_right_car_after_the_car_parked()
+        public void should_pickup_car_after_the_car_parked()
         {
-            Car carParking = new Car();
             Parkinglot parkinglot = new Parkinglot();
 
-            Car carPickup = parkinglot.Pick(parkinglot.Park(carParking));
+            Car carPickup = parkinglot.Pick(parkinglot.Park(new Car()));
 
-            Assert.Same(carParking, carPickup);
+            Assert.NotNull(carPickup);
         }
 
         [Fact]
