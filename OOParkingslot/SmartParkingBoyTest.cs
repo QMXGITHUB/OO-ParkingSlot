@@ -5,7 +5,7 @@ namespace OOParkingslot
     public class SmartParkingBoyTest
     {
         [Fact]
-        public void should_parkinglot_pickup_the_car_when_parkingboy_park_a_car()
+        public void should_park_a_car_the_car_when_there_is_only_one_parkinglot()
         {
             var parkinglot = new Parkinglot();
             var smartParkingBoy = new SmartParkingBoy(parkinglot);
@@ -17,10 +17,23 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void should_pickup_the_car_after_parking_lot_park_a_car()
+        public void should_pickup_the_car_after_there_is_only_one_parkninglot()
         {
             var parkinglot = new Parkinglot();
             var smartParkingBoy = new SmartParkingBoy(parkinglot);
+            var car = new Car();
+
+            var parkingToken = parkinglot.Park(car);
+            var pickedCar = smartParkingBoy.Pick(parkingToken);
+
+            Assert.Same(car, pickedCar);
+        }
+
+        [Fact]
+        public void should_pickup_the_car_when_mutiple_parkinglots()
+        {
+            var parkinglot = new Parkinglot();
+            var smartParkingBoy = new SmartParkingBoy(new Parkinglot(), parkinglot);
             var car = new Car();
 
             var parkingToken = parkinglot.Park(car);
