@@ -69,12 +69,12 @@ namespace OOParkingslot
         [Fact]
         public void should_park_the_car_in_the_last_parking_lot_if_the_two_parking_lots_have_same_stalls_after_parking()
         {
-            var lastParkingLot = new Parkinglot(2);
             var firstParkingLot = new Parkinglot(3);
-            var smartParkingBoy = new SmartParkingBoy(firstParkingLot, lastParkingLot);
             firstParkingLot.Park(new Car());
-
+            var lastParkingLot = new Parkinglot(2);
+            var smartParkingBoy = new SmartParkingBoy(firstParkingLot, lastParkingLot);
             var car = new Car();
+
             var parkingToken = smartParkingBoy.Park(car);
 
             Assert.Same(car, lastParkingLot.Pick(parkingToken));
@@ -86,7 +86,6 @@ namespace OOParkingslot
             var toBeMoreAvailableStallsParkingLot = new Parkinglot(2);
             var smartParkingBoy = new SmartParkingBoy(toBeMoreAvailableStallsParkingLot, new Parkinglot(1));
             var parkToken = toBeMoreAvailableStallsParkingLot.Park(new Car());
-
 
             toBeMoreAvailableStallsParkingLot.Pick(parkToken);
             var car = new Car();

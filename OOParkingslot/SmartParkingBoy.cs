@@ -17,8 +17,8 @@ namespace OOParkingslot
             var parkingLotWithMoreAvailableStalls =
             parkingLots.GroupBy(lot => lot.availableStallCount, lot => lot)
                 .OrderByDescending(group => group.Key)
-                .FirstOrDefault()
-                .LastOrDefault();
+                .First()
+                .Last();
 
             return parkingLotWithMoreAvailableStalls.Park(car);
         }
