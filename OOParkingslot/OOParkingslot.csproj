@@ -74,6 +74,7 @@
     <Compile Include="SmartParkingBoyTest.cs" />
     <Compile Include="SuperParkingBoy.cs" />
     <Compile Include="SuperParkingBoyTest.cs" />
+    <Compile Include="CompareTwoDoubleData.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

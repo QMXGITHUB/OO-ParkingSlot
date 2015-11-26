@@ -61,5 +61,24 @@ namespace OOParkingslot
 
             Assert.Null(parkinglot.Pick(parkingToken));
         }
+
+
+        [Fact]
+        public void should_return_1_when_no_cars_parked()
+        {
+            var parkinglot = new Parkinglot();
+
+            Assert.Equal(1, parkinglot.GetVacancyRate());
+        }
+
+        [Fact]
+        public void should_return_0_857_when_parkinglot_size_7_parked_1_car()
+        {
+            var parkinglot = new Parkinglot(7);
+
+            parkinglot.Park(new Car());
+
+            Assert.True(CompareTwoDoubleData.Equal(0.857, parkinglot.GetVacancyRate(), 0.001));
+        }
     }
 }

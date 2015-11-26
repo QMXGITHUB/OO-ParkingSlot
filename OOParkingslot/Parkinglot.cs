@@ -40,6 +40,13 @@ namespace OOParkingslot
         {
             return availableStallCount == 0;
         }
+
+        public double GetVacancyRate()
+        {
+            return availableStallCount/(double)maxParking;
+        }
+
+        
     }
 
     public class ParkingToken
