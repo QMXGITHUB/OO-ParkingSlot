@@ -110,5 +110,17 @@ namespace OOParkingslot
 
             Assert.True(CompareTwoDoubleData.Equal(0.857, parkinglot.GetVacancyRate(), 0.001));
         }
+
+        [Fact]
+        public void should_return_0_9_when_parkinglot_size_10_parked_2_cars_first_then_picked_1_car
+            ()
+        {
+            var parkinglot = new Parkinglot(10);
+            parkinglot.Park(new Car());
+
+            parkinglot.Pick(parkinglot.Park(new Car()));
+
+            Assert.True(CompareTwoDoubleData.Equal(0.9, parkinglot.GetVacancyRate(), 0.001));
+        }
     }
 }
