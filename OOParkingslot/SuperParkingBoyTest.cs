@@ -28,5 +28,22 @@ namespace OOParkingslot
 
             Assert.Same(car, pickedCar);
         }
+
+        [Fact]
+        public void
+            should_parked_in_higher_vacancy_rate_parkinglot_when_two_parkinglot_with_different_vacancy_rate_0_8_and_0_9()
+        {
+            var lowerVacancyRateParkinglot = new Parkinglot(10);
+            lowerVacancyRateParkinglot.Park(new Car());
+            lowerVacancyRateParkinglot.Park(new Car());
+            var higherVacancyRateParkinglot = new Parkinglot(10);
+            higherVacancyRateParkinglot.Park(new Car());
+            var superParkingBoy = new SuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var car = new Car();
+
+            var parkingToken = superParkingBoy.Park(car);
+
+            Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
+        }
     }
 }

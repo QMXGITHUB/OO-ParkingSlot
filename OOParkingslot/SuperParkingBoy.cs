@@ -18,12 +18,18 @@ namespace OOParkingslot
 
         public Car Pick(string parkingToken)
         {
-            return smartParkingBoy.Pick(parkingToken);
+            foreach (var parkingLot in parkinglots)
+            {
+                var car = parkingLot.Pick(parkingToken);
+                if (car != null)
+                    return car;
+            }
+            return null;
         }
 
         public string Park(Car car)
         {
-            return parkinglots[0].Park(car);
+            return parkinglots.OrderByDescending(parkinglot => parkinglot.GetVacancyRate()).First().Park(car);
         }
     }
 }
