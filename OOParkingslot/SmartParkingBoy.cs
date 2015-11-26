@@ -14,13 +14,9 @@ namespace OOParkingslot
 
         public string Park(Car car)
         {
-            var parkingLotWithMoreAvailableStalls =
-            parkingLots.GroupBy(lot => lot.availableStallCount, lot => lot)
-                .OrderByDescending(group => group.Key)
+            return parkingLots.OrderByDescending(parkinglot => parkinglot.availableStallCount)
                 .First()
-                .Last();
-
-            return parkingLotWithMoreAvailableStalls.Park(car);
+                .Park(car);
         }
 
         public Car Pick(string parkingToken)
