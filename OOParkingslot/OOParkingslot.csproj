@@ -72,6 +72,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartParkingBoy.cs" />
     <Compile Include="SmartParkingBoyTest.cs" />
+    <Compile Include="SuperParkingBoy.cs" />
+    <Compile Include="SuperParkingBoyTest.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -38,7 +38,7 @@ namespace OOParkingslot
 
         private bool IsFull()
         {
-            return garage.Count == maxParking;
+            return availableStallCount == 0;
         }
     }
 
