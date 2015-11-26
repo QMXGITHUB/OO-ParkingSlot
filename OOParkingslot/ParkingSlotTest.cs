@@ -62,6 +62,36 @@ namespace OOParkingslot
             Assert.Null(parkinglot.Pick(parkingToken));
         }
 
+        [Fact]
+        public void should_available_stalls_equal_parkinglot_size_10_when_no_cars_parked()
+        {
+            var parkinglot = new Parkinglot(10);
+
+            Assert.Equal(10, parkinglot.availableStallCount);
+        }
+
+        [Fact]
+        public void should_available_stalls_decrease_1_to_be_9_when_parkinglot_size_10_parked_1_car()
+        {
+            var parkinglot = new Parkinglot(10);
+
+            parkinglot.Park(new Car());
+
+            Assert.Equal(9, parkinglot.availableStallCount);
+        }
+
+        [Fact]
+        public void
+            should_available_stall_increase_1_to_be_9_when_parkinglot_size_10_parked_2_cars_and_picked_one
+            ()
+        {
+            var parkinglot = new Parkinglot(10);
+            parkinglot.Park(new Car());
+
+            parkinglot.Pick(parkinglot.Park(new Car()));
+
+            Assert.Equal(9, parkinglot.availableStallCount);
+        }
 
         [Fact]
         public void should_return_1_when_no_cars_parked()
