@@ -11,7 +11,7 @@ namespace OOParkingslot
             var smartParkingBoy = new SmartParkingBoy(parkinglot);
             var car = new Car();
 
-            var parkingToken = smartParkingBoy.Park(car);
+            var parkingToken = smartParkingBoy.Park(car, smartParkingBoy);
 
             Assert.Same(car, parkinglot.Pick(parkingToken));
         }
@@ -52,7 +52,7 @@ namespace OOParkingslot
             var smartParkingBoy = new SmartParkingBoy(littleAvailableStallsParkinglot, moreAvailableStallsParkinglot);
             var car = new Car();
             
-            var parkingToken = smartParkingBoy.Park(car);
+            var parkingToken = smartParkingBoy.Park(car, smartParkingBoy);
 
             Assert.Same(car, moreAvailableStallsParkinglot.Pick(parkingToken));
         }
@@ -66,7 +66,7 @@ namespace OOParkingslot
             secondParkinglot.Park(new Car());
             SmartParkingBoy smartParkingBoy = new SmartParkingBoy(firstParkinglot, secondParkinglot);
 
-            var parkingToken = smartParkingBoy.Park(new Car());
+            var parkingToken = smartParkingBoy.Park(new Car(), smartParkingBoy);
 
             Assert.Null(smartParkingBoy.Pick(parkingToken));
         }

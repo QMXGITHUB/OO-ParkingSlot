@@ -23,7 +23,7 @@ namespace OOParkingslot
             var parkingBoy = new ParkingBoy(parkinglot);
 
             var car = new Car();
-            var parkingToken = parkingBoy.Park(car);
+            var parkingToken = parkingBoy.Park(car, parkingBoy);
 
             Assert.Same(car, parkinglot.Pick(parkingToken));
         }
@@ -48,7 +48,7 @@ namespace OOParkingslot
             var parkingBoy = new ParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
 
             var car = new Car();
-            var parkingToken = parkingBoy.Park(car);
+            var parkingToken = parkingBoy.Park(car, parkingBoy);
 
             Assert.Same(car, secondNotFullParkinglot.Pick(parkingToken));
         }
@@ -62,7 +62,7 @@ namespace OOParkingslot
             secondParkinglot.Park(new Car());
             var parkingBoy = new ParkingBoy(firstParkinglot, secondParkinglot);
 
-            var parkingToken = parkingBoy.Park(new Car());
+            var parkingToken = parkingBoy.Park(new Car(), parkingBoy);
 
             Assert.Null(parkingBoy.Pick(parkingToken));
         }

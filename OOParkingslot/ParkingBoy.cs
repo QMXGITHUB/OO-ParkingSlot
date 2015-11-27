@@ -2,31 +2,10 @@
 
 namespace OOParkingslot
 {
-    public class ParkingBoy : ParkingPolicy
+    public class ParkingBoy : BaseParkingBoy, ParkingPolicy
     {
-        private Parkinglot[] parkinglots;
-
-        public ParkingBoy(params Parkinglot[] parkinglots)
+        public ParkingBoy(params Parkinglot[] parkinglots):base(parkinglots)
         {
-            this.parkinglots = parkinglots;
-        }
-
-        public Car Pick(string parkToken)
-        {
-            Car car = null;
-            foreach (var parkinglot in parkinglots)
-            {
-                car = parkinglot.Pick(parkToken);
-                if (car == null) continue;
-            }
-            return car;
-        }
-
-        public string Park(Car car)
-        {
-            var parkinglotFilter = FindParkinglotToPark(parkinglots);
-            if (parkinglotFilter == null) return null;
-            return parkinglotFilter.Park(car);
         }
 
         public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
