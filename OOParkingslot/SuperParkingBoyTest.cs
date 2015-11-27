@@ -9,7 +9,7 @@ namespace OOParkingslot
         {
             var car = new Car();
             var superParkingBoy = new SuperParkingBoy(new Parkinglot());
-            var parkingToken = superParkingBoy.Park(car);
+            var parkingToken = superParkingBoy.Park(car, superParkingBoy);
 
             Car carPick = superParkingBoy.Pick(parkingToken);
 
@@ -41,9 +41,23 @@ namespace OOParkingslot
             var superParkingBoy = new SuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
             var car = new Car();
 
-            var parkingToken = superParkingBoy.Park(car);
+            var parkingToken = superParkingBoy.Park(car, superParkingBoy);
 
             Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
+        }
+
+        [Fact]
+        public void should_pick_failed_when_all_parkinglots_vacancy_rate_is_zero()
+        {
+            var firstParkinglot = new Parkinglot(1);
+            firstParkinglot.Park(new Car());
+            var secondParkinglot = new Parkinglot(1);
+            secondParkinglot.Park(new Car());
+            var superParkingBoy = new SuperParkingBoy(firstParkinglot, secondParkinglot);
+
+            var parkingToken = superParkingBoy.Park(new Car(), superParkingBoy);
+
+            Assert.Null(superParkingBoy.Pick(parkingToken));
         }
     }
 }

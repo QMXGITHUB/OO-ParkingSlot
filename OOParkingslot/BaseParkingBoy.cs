@@ -4,7 +4,7 @@
     {
         protected Parkinglot[] parkinglots;
 
-        public BaseParkingBoy(Parkinglot[] parkinglots1)
+        public BaseParkingBoy(params Parkinglot[] parkinglots1)
         {
             this.parkinglots = parkinglots1;
         }
