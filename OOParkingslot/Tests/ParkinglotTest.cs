@@ -67,7 +67,7 @@ namespace OOParkingslot.Tests
         {
             var parkinglot = new Parkinglot(10);
 
-            Assert.Equal(10, parkinglot.AvailableStallCount);
+            Assert.Equal(10, parkinglot.GetAvailableStallsCount());
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace OOParkingslot.Tests
 
             parkinglot.Park(new Car());
 
-            Assert.Equal(9, parkinglot.AvailableStallCount);
+            Assert.Equal(9, parkinglot.GetAvailableStallsCount());
         }
 
         [Fact]
@@ -90,7 +90,7 @@ namespace OOParkingslot.Tests
 
             parkinglot.Pick(parkinglot.Park(new Car()));
 
-            Assert.Equal(9, parkinglot.AvailableStallCount);
+            Assert.Equal(9, parkinglot.GetAvailableStallsCount());
         }
 
         [Fact]

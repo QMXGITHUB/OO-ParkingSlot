@@ -6,19 +6,14 @@ namespace OOParkingslot
     public class Parkinglot
     {
         private readonly Dictionary<string, Car> garage = new Dictionary<string, Car>();
-        private readonly int maxParking;
-        public int AvailableStallCount {
-            get { return maxParking - garage.Count; } 
+        private readonly int capacity;
+
+        public Parkinglot(int capacity)
+        {
+            this.capacity = capacity;
         }
 
-        public Parkinglot(int maxParking)
-        {
-            this.maxParking = maxParking;
-        }
-
-        public Parkinglot():this(20)
-        {
-        }
+        public Parkinglot() : this(20){}
 
         public string Park(Car car)
         {
@@ -30,23 +25,36 @@ namespace OOParkingslot
 
         public Car Pick(string parkingToken)
         {
-            if (parkingToken == null ||!garage.ContainsKey(parkingToken)) return null;
+            if (ValidateParkingToken(parkingToken)) return null;
             var car = garage[parkingToken];
             garage.Remove(parkingToken);
             return car;
         }
 
+        private bool ValidateParkingToken(string parkingToken)
+        {
+            return parkingToken == null ||!garage.ContainsKey(parkingToken);
+        }
+
+        public int GetAvailableStallsCount()
+        {
+            return capacity - GetCarCountInGarage();
+        }
+
+        private int GetCarCountInGarage()
+        {
+            return garage.Count;
+        }
+
         public bool IsFull()
         {
-            return AvailableStallCount == 0;
+            return GetAvailableStallsCount() == 0;
         }
 
         public double GetVacancyRate()
         {
-            return AvailableStallCount/(double)maxParking;
+            return GetAvailableStallsCount()/(double)capacity;
         }
-
-        
     }
 
     public class ParkingToken

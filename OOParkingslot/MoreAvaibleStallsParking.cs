@@ -6,7 +6,7 @@ namespace OOParkingslot
     {
         public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
         {
-            return parkinglots.OrderByDescending(parkinglot => parkinglot.AvailableStallCount)
+            return parkinglots.OrderByDescending(parkinglot => parkinglot.GetAvailableStallsCount())
                 .First();
         }
     }
