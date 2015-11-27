@@ -20,7 +20,7 @@
             return car;
         }
 
-        public string Park(Car car, ParkingPolicy parkingPolicy)
+        public string Park(Car car, IParkingPolicy parkingPolicy)
         {
             var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
             if (parkinglotFilter == null) return null;

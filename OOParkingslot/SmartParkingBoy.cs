@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class SmartParkingBoy: BaseParkingBoy, ParkingPolicy
+    public class SmartParkingBoy: BaseParkingBoy, IParkingPolicy
     {
 
         public SmartParkingBoy(params Parkinglot[] parkinglots):base(parkinglots)

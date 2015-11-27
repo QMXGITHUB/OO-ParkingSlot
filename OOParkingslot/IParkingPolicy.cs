@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOParkingslot
 {
-    public interface ParkingPolicy
+    public interface IParkingPolicy
     {
         Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots);
     }
