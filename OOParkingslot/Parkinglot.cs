@@ -36,7 +36,7 @@ namespace OOParkingslot
             return car;
         }
 
-        private bool IsFull()
+        public bool IsFull()
         {
             return availableStallCount == 0;
         }

@@ -94,7 +94,7 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void should_return_1_when_no_cars_parked()
+        public void should_vacancy_rate_be_1_when_no_cars_parked()
         {
             var parkinglot = new Parkinglot();
 
@@ -102,7 +102,7 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void should_return_0_857_when_parkinglot_size_7_parked_1_car()
+        public void should_vacancy_rate_be_0_857_when_parkinglot_size_7_parked_1_car()
         {
             var parkinglot = new Parkinglot(7);
 
@@ -112,7 +112,7 @@ namespace OOParkingslot
         }
 
         [Fact]
-        public void should_return_0_9_when_parkinglot_size_10_parked_2_cars_first_then_picked_1_car
+        public void should_vacancy_rate_be_0_9_when_parkinglot_size_10_parked_2_cars_first_then_picked_1_car
             ()
         {
             var parkinglot = new Parkinglot(10);
@@ -121,6 +121,29 @@ namespace OOParkingslot
             parkinglot.Pick(parkinglot.Park(new Car()));
 
             Assert.True(CompareTwoDoubleData.Equal(0.9, parkinglot.GetVacancyRate(), 0.001));
+        }
+
+        [Fact]
+        public void should_isfull_be_true_when_parkinglot_cannot_park()
+        {
+            var parkinglot = new Parkinglot(1);
+            parkinglot.Park(new Car());
+            var isFull = parkinglot.IsFull();
+
+            Assert.Null(parkinglot.Pick(parkinglot.Park(new Car())));
+            Assert.True(isFull);
+        }
+
+        [Fact]
+        public void should_isfull_be_false_when_parkinglot_can_park()
+        {
+            var parkinglot = new Parkinglot(2);
+            var isFull = parkinglot.IsFull();
+
+            var car = new Car();
+            Assert.Same(car, parkinglot.Pick(parkinglot.Park(car)));
+            
+            Assert.False(isFull);
         }
     }
 }
