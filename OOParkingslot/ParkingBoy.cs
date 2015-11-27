@@ -24,9 +24,14 @@ namespace OOParkingslot
 
         public string Park(Car car)
         {
-            var parkinglotFilter = parkinglots.FirstOrDefault(parkinglot => parkinglot.IsFull() == false);
+            var parkinglotFilter = FindParkinglotToPark(parkinglots);
             if (parkinglotFilter == null) return null;
             return parkinglotFilter.Park(car);
+        }
+
+        private Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
+        {
+            return parkinglots.FirstOrDefault(parkinglot => parkinglot.IsFull() == false);
         }
     }
 }
