@@ -1,16 +1,52 @@
-﻿using System.Linq;
-
-namespace OOParkingslot
+﻿namespace OOParkingslot
 {
-    public class ParkingBoy : BaseParkingBoy, IParkingPolicy
+    public class ParkingBoy
     {
-        public ParkingBoy(params Parkinglot[] parkinglots):base(parkinglots)
+        protected Parkinglot[] parkinglots;
+        private IParkingPolicy parkingPolicy;
+
+        public ParkingBoy(params Parkinglot[] parkinglots1)
         {
+            this.parkinglots = parkinglots1;
         }
 
-        public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
+        public ParkingBoy(IParkingPolicy parkingPolicy, Parkinglot[] parkinglots)
         {
-            return parkinglots.FirstOrDefault(parkinglot => parkinglot.IsFull() == false);
+            this.parkingPolicy = parkingPolicy;
+            this.parkinglots = parkinglots;
+        }
+
+        public Car Pick(string parkToken)
+        {
+            Car car = null;
+            foreach (var parkinglot in parkinglots)
+            {
+                car = parkinglot.Pick(parkToken);
+                if (car == null) continue;
+            }
+            return car;
+        }
+
+        public string Park(Car car, IParkingPolicy parkingPolicy)
+        {
+            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
+            if (parkinglotFilter == null) return null;
+            return parkinglotFilter.Park(car);
+        }
+
+
+        public string Park(Car car)
+        {
+            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
+            if (parkinglotFilter == null) return null;
+            return parkinglotFilter.Park(car);
+        }
+
+        public static ParkingBoy CreateSequentParkingBoy(
+            IParkingPolicy parkingPolicy,
+            params Parkinglot[] parkinglots)
+        {
+            return new ParkingBoy(parkingPolicy, parkinglots);
         }
     }
 }
