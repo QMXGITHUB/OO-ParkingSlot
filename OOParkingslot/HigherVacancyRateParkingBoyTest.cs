@@ -2,14 +2,14 @@
 
 namespace OOParkingslot
 {
-    public class SuperParkingBoyTest
+    public class HigherVacancyRateParkingBoyTest
     {
         [Fact]
         public void Should_pick_car_after_parked()
         {
             var car = new Car();
-            var superParkingBoy = new SuperParkingBoy(new Parkinglot());
-            var parkingToken = superParkingBoy.Park(car, superParkingBoy);
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(new Parkinglot());
+            var parkingToken = superParkingBoy.Park(car);
 
             Car carPick = superParkingBoy.Pick(parkingToken);
 
@@ -20,7 +20,7 @@ namespace OOParkingslot
         public void Should_pick_when_there_are_two_parkinglots()
         {
             var parkinglot = new Parkinglot();
-            var superParkingBoy = new SuperParkingBoy(new Parkinglot(), parkinglot);
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(new Parkinglot(), parkinglot);
             var car = new Car();
             var parkingToken = parkinglot.Park(car);
 
@@ -38,10 +38,10 @@ namespace OOParkingslot
             lowerVacancyRateParkinglot.Park(new Car());
             var higherVacancyRateParkinglot = new Parkinglot(10);
             higherVacancyRateParkinglot.Park(new Car());
-            var superParkingBoy = new SuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
             var car = new Car();
 
-            var parkingToken = superParkingBoy.Park(car, superParkingBoy);
+            var parkingToken = superParkingBoy.Park(car);
 
             Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
         }
@@ -53,9 +53,9 @@ namespace OOParkingslot
             firstParkinglot.Park(new Car());
             var secondParkinglot = new Parkinglot(1);
             secondParkinglot.Park(new Car());
-            var superParkingBoy = new SuperParkingBoy(firstParkinglot, secondParkinglot);
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(firstParkinglot, secondParkinglot);
 
-            var parkingToken = superParkingBoy.Park(new Car(), superParkingBoy);
+            var parkingToken = superParkingBoy.Park(new Car());
 
             Assert.Null(superParkingBoy.Pick(parkingToken));
         }

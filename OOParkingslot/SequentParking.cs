@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class SequentParkingWhenBeforeAreFull: IParkingPolicy
+    public class SequentParking: IParkingPolicy
     {
         public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
         {

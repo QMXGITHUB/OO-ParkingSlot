@@ -43,10 +43,21 @@
         }
 
         public static ParkingBoy CreateSequentParkingBoy(
-            IParkingPolicy parkingPolicy,
             params Parkinglot[] parkinglots)
         {
-            return new ParkingBoy(parkingPolicy, parkinglots);
+            return new ParkingBoy(new SequentParking(), parkinglots);
+        }
+
+        public static ParkingBoy CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+            params Parkinglot[] parkinglots)
+        {
+            return new ParkingBoy(new MoreAvaibleStallsParking(), parkinglots);
+        }
+
+        public static ParkingBoy CreateSuperParkingBoyParkedCarInHigherVacancyRate(
+            params Parkinglot[] parkinglots)
+        {
+            return new ParkingBoy(new HigherVacancyRateParking(), parkinglots);
         }
     }
 }
