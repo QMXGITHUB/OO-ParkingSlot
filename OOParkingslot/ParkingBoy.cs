@@ -2,19 +2,19 @@
 {
     public class ParkingBoy
     {
-        protected Parkinglot[] Parkinglots;
+        private readonly Parkinglot[] parkinglots;
         private readonly IParkingPolicy parkingPolicy;
 
         public ParkingBoy(IParkingPolicy parkingPolicy, Parkinglot[] parkinglots)
         {
             this.parkingPolicy = parkingPolicy;
-            this.Parkinglots = parkinglots;
+            this.parkinglots = parkinglots;
         }
 
         public Car Pick(string parkToken)
         {
             Car car = null;
-            foreach (var parkinglot in Parkinglots)
+            foreach (var parkinglot in parkinglots)
             {
                 car = parkinglot.Pick(parkToken);
                 if (car == null) continue;
@@ -24,7 +24,7 @@
 
         public string Park(Car car)
         {
-            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(Parkinglots);
+            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
             if (parkinglotFilter == null) return null;
             return parkinglotFilter.Park(car);
         }
