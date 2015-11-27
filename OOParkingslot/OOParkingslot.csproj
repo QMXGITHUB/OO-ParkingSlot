@@ -66,17 +66,17 @@
     <Compile Include="ParkingBoy.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="SequentParking.cs" />
-    <Compile Include="SequenctParkingBoyTest.cs" />
     <Compile Include="Parkinglot.cs" />
     <Compile Include="IParkingPolicy.cs" />
-    <Compile Include="ParkinglotTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoreAvaibleStallsParking.cs" />
-    <Compile Include="MoreAvaibleStallstParkingBoyTest.cs" />
     <Compile Include="HigherVacancyRateParking.cs" />
-    <Compile Include="HigherVacancyRateParkingBoyTest.cs" />
     <Compile Include="CompareTwoDoubleData.cs" />
+    <Compile Include="Tests\ParkinglotTest.cs" />
+    <Compile Include="Tests\SequentParkingBoyTest.cs" />
+    <Compile Include="Tests\SmartParkingBoyTest.cs" />
+    <Compile Include="Tests\SuperParkingBoyTest.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class HigherVacancyRateParkingBoyTest
+    public class SuperParkingBoyTest
     {
         [Fact]
         public void Should_pick_car_after_parked()

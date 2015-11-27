@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class MoreAvaibleStallstParkingBoyTest
+    public class SmartParkingBoyTest
     {
         [Fact]
         public void should_park_when_there_is_only_one_parkinglot()
