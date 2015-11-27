@@ -5,7 +5,7 @@ namespace OOParkingslot.Tests
     public class ParkinglotTest
     {
         [Fact]
-        public void should_pickup_car_after_the_car_parked()
+        public void should_pick_car_after_the_car_parked()
         {
             Parkinglot parkinglot = new Parkinglot();
 
@@ -15,13 +15,15 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_pickup_right_car_when_mutiple_cars_in_parkinglot()
+        public void should_pick_right_car_when_mutiple_cars_parked()
         {
-            Car qq = new Car();
             Parkinglot parkinglot = new Parkinglot();
             parkinglot.Park(new Car());
+            Car qq = new Car();
+            var parkingTokenForQQ = parkinglot.Park(qq);
+            parkinglot.Park(new Car());
 
-            var carPickup = parkinglot.Pick(parkinglot.Park(qq));
+            var carPickup = parkinglot.Pick(parkingTokenForQQ);
 
             Assert.Same(qq, carPickup);
         }
@@ -39,7 +41,7 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_not_park_a_car_when_parkinglot_is_full()
+        public void should_not_park_when_parkinglot_is_full()
         {
             var parkinglot = new Parkinglot(1);
             parkinglot.Park(new Car());
@@ -52,7 +54,7 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_not_pickup_car_with_wrong_parkingToken()
+        public void should_not_pick_with_wrong_parkingToken()
         {
             var parkinglot = new Parkinglot();
             parkinglot.Park(new Car());
@@ -82,15 +84,15 @@ namespace OOParkingslot.Tests
 
         [Fact]
         public void
-            should_available_stall_increase_1_to_be_9_when_parkinglot_size_10_parked_2_cars_and_picked_one
+            should_available_stall_increase_1_to_be_7_when_parkinglot_size_8_parked_2_cars_and_picked_one
             ()
         {
-            var parkinglot = new Parkinglot(10);
+            var parkinglot = new Parkinglot(8);
             parkinglot.Park(new Car());
 
             parkinglot.Pick(parkinglot.Park(new Car()));
 
-            Assert.Equal(9, parkinglot.GetAvailableStallsCount());
+            Assert.Equal(7, parkinglot.GetAvailableStallsCount());
         }
 
         [Fact]
@@ -108,7 +110,7 @@ namespace OOParkingslot.Tests
 
             parkinglot.Park(new Car());
 
-            Assert.True(CompareTwoDoubleData.Equal(0.857, parkinglot.GetVacancyRate(), 0.001));
+            Assert.True(TwoDoubleData.Equal(0.857, parkinglot.GetVacancyRate(), 0.001));
         }
 
         [Fact]
@@ -120,7 +122,7 @@ namespace OOParkingslot.Tests
 
             parkinglot.Pick(parkinglot.Park(new Car()));
 
-            Assert.True(CompareTwoDoubleData.Equal(0.9, parkinglot.GetVacancyRate(), 0.001));
+            Assert.True(TwoDoubleData.Equal(0.9, parkinglot.GetVacancyRate(), 0.001));
         }
 
         [Fact]

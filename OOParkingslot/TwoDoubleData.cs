@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class CompareTwoDoubleData
+    public class TwoDoubleData
     {
         public static bool Equal(double date1, double data2, double precision)
         {
