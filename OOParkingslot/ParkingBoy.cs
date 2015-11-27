@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class ParkingBoy
+    public class ParkingBoy : ParkingPolicy
     {
         private Parkinglot[] parkinglots;
 
@@ -29,7 +29,7 @@ namespace OOParkingslot
             return parkinglotFilter.Park(car);
         }
 
-        private Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
+        public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
         {
             return parkinglots.FirstOrDefault(parkinglot => parkinglot.IsFull() == false);
         }
