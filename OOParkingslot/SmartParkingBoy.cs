@@ -13,9 +13,7 @@ namespace OOParkingslot
 
         public string Park(Car car)
         {
-            return parkingLots.OrderByDescending(parkinglot => parkinglot.availableStallCount)
-                .First()
-                .Park(car);
+            return FindParkinglotToPark(parkingLots).Park(car);
         }
 
         public Car Pick(string parkingToken)
@@ -27,6 +25,12 @@ namespace OOParkingslot
                     return car;
             }
             return null;
+        }
+
+        public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
+        {
+            return parkingLots.OrderByDescending(parkinglot => parkinglot.availableStallCount)
+                .First();
         }
     }
 }

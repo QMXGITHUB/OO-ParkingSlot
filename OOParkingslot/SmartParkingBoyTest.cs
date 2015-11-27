@@ -56,5 +56,19 @@ namespace OOParkingslot
 
             Assert.Same(car, moreAvailableStallsParkinglot.Pick(parkingToken));
         }
+
+        [Fact]
+        public void should_failed_pick_when_all_parkinglots_are_full()
+        {
+            var firstParkinglot = new Parkinglot(1);
+            firstParkinglot.Park(new Car());
+            var secondParkinglot = new Parkinglot(1);
+            secondParkinglot.Park(new Car());
+            SmartParkingBoy smartParkingBoy = new SmartParkingBoy(firstParkinglot, secondParkinglot);
+
+            var parkingToken = smartParkingBoy.Park(new Car());
+
+            Assert.Null(smartParkingBoy.Pick(parkingToken));
+        }
     }
 }
