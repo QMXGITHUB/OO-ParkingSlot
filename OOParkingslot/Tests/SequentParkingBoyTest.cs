@@ -29,7 +29,7 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_pickup_car_when_there_are_two_parkinglot_parked()
+        public void should_pick_car_when_there_are_two_parkinglot_parked()
         {
             var parkinglot = new Parkinglot();
             var parkingBoy = ParkingBoy.CreateSequentParkingBoy(new Parkinglot(), parkinglot);
@@ -54,7 +54,7 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_failed_pick_car_when_all_parkinglot_is_full()
+        public void should_failed_pick_car_after_parked_when_all_parkinglot_is_full()
         {
             var firstParkinglot = new Parkinglot(1);
             firstParkinglot.Park(new Car());

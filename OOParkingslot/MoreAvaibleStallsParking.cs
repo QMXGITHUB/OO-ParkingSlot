@@ -2,7 +2,7 @@
 
 namespace OOParkingslot
 {
-    public class MoreAvaibleStallsParking: IParkingPolicy
+    public class MoreAvaibleStallsParking : IParkingPolicy
     {
         public Parkinglot FindParkinglotToPark(Parkinglot[] parkinglots)
         {

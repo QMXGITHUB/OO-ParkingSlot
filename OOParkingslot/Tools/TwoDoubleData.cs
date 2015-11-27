@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OOParkingslot
+namespace OOParkingslot.Tools
 {
     public class TwoDoubleData
     {

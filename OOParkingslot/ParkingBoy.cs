@@ -11,6 +11,13 @@
             this.parkinglots = parkinglots;
         }
 
+        public string Park(Car car)
+        {
+            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
+            if (parkinglotFilter == null) return null;
+            return parkinglotFilter.Park(car);
+        }
+
         public Car Pick(string parkToken)
         {
             Car car = null;
@@ -20,13 +27,6 @@
                 if (car == null) continue;
             }
             return car;
-        }
-
-        public string Park(Car car)
-        {
-            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
-            if (parkinglotFilter == null) return null;
-            return parkinglotFilter.Park(car);
         }
 
         public static ParkingBoy CreateSequentParkingBoy(
