@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace OOParkingslot
+namespace OOParkingslot.Tests
 {
     public class SuperParkingBoyTest
     {

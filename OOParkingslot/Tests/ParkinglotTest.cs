@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace OOParkingslot
+namespace OOParkingslot.Tests
 {
     public class ParkinglotTest
     {
@@ -67,7 +67,7 @@ namespace OOParkingslot
         {
             var parkinglot = new Parkinglot(10);
 
-            Assert.Equal(10, parkinglot.availableStallCount);
+            Assert.Equal(10, parkinglot.AvailableStallCount);
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace OOParkingslot
 
             parkinglot.Park(new Car());
 
-            Assert.Equal(9, parkinglot.availableStallCount);
+            Assert.Equal(9, parkinglot.AvailableStallCount);
         }
 
         [Fact]
@@ -90,7 +90,7 @@ namespace OOParkingslot
 
             parkinglot.Pick(parkinglot.Park(new Car()));
 
-            Assert.Equal(9, parkinglot.availableStallCount);
+            Assert.Equal(9, parkinglot.AvailableStallCount);
         }
 
         [Fact]

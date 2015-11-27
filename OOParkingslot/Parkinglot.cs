@@ -5,9 +5,9 @@ namespace OOParkingslot
 {
     public class Parkinglot
     {
-        Dictionary<string, Car> garage = new Dictionary<string, Car>();
-        private int maxParking;
-        public int availableStallCount {
+        private readonly Dictionary<string, Car> garage = new Dictionary<string, Car>();
+        private readonly int maxParking;
+        public int AvailableStallCount {
             get { return maxParking - garage.Count; } 
         }
 
@@ -38,12 +38,12 @@ namespace OOParkingslot
 
         public bool IsFull()
         {
-            return availableStallCount == 0;
+            return AvailableStallCount == 0;
         }
 
         public double GetVacancyRate()
         {
-            return availableStallCount/(double)maxParking;
+            return AvailableStallCount/(double)maxParking;
         }
 
         
