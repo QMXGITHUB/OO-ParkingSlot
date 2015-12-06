@@ -14,8 +14,7 @@
         public string Park(Car car)
         {
             var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
-            if (parkinglotFilter == null) return null;
-            return parkinglotFilter.Park(car);
+            return parkinglotFilter == null ? null : parkinglotFilter.Park(car);
         }
 
         public Car Pick(string parkToken)
