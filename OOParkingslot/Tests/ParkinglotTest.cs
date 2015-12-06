@@ -42,19 +42,6 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_not_park_when_parkinglot_is_full()
-        {
-            var parkinglot = new Parkinglot(1);
-            parkinglot.Park(new Car());
-
-            var parkingToken = parkinglot.Park(new Car());
-
-            var carPickup = parkinglot.Pick(parkingToken);
-
-            Assert.Null(carPickup);
-        }
-
-        [Fact]
         public void should_not_pick_with_wrong_parkingToken()
         {
             var parkinglot = new Parkinglot();
@@ -63,37 +50,6 @@ namespace OOParkingslot.Tests
             var parkingToken = "123324";
 
             Assert.Null(parkinglot.Pick(parkingToken));
-        }
-
-        [Fact]
-        public void should_available_stalls_equal_parkinglot_size_10_when_no_cars_parked()
-        {
-            var parkinglot = new Parkinglot(10);
-
-            Assert.Equal(10, parkinglot.GetAvailableStallsCount());
-        }
-
-        [Fact]
-        public void should_available_stalls_decrease_1_to_be_9_when_parkinglot_size_10_parked_1_car()
-        {
-            var parkinglot = new Parkinglot(10);
-
-            parkinglot.Park(new Car());
-
-            Assert.Equal(9, parkinglot.GetAvailableStallsCount());
-        }
-
-        [Fact]
-        public void
-            should_available_stall_increase_1_to_be_7_when_parkinglot_size_8_parked_2_cars_and_picked_one
-            ()
-        {
-            var parkinglot = new Parkinglot(8);
-            parkinglot.Park(new Car());
-
-            parkinglot.Pick(parkinglot.Park(new Car()));
-
-            Assert.Equal(7, parkinglot.GetAvailableStallsCount());
         }
 
         [Fact]

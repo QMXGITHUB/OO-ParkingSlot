@@ -58,6 +58,86 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
+        public void should_park_in_high_available_stalls_when_no_car_parked_before_with_differet_init_count()
+        {
+            var moreAvailableStalls = new Parkinglot(2);
+            var parkingBoy = ParkingBoy.CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+                new Parkinglot(1),
+                moreAvailableStalls);
+            var car = new Car();
+
+            var token = parkingBoy.Park(car);
+
+            Assert.Same(car, moreAvailableStalls.Pick(token));
+        }
+
+        [Fact]
+        public void should_park_in_high_available_stalls_when_no_car_parked_before_with_same_init()
+        {
+            var parkinglot = new Parkinglot(1);
+            var parkingBoy = ParkingBoy.CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+                parkinglot,
+                new Parkinglot(1));
+            var car = new Car();
+
+            var token = parkingBoy.Park(car);
+
+            Assert.Same(car, parkinglot.Pick(token));
+        }
+
+        [Fact]
+        public void should_park_in_high_available_stalls_when_parked_differently_before_with_same_init()
+        {
+            var lessAvailableStalls = new Parkinglot(2);
+            lessAvailableStalls.Park(new Car());
+            var moreAvailableStall = new Parkinglot(2);
+            var parkingBoy = ParkingBoy.CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+                lessAvailableStalls,
+                moreAvailableStall);
+            var car = new Car();
+
+            var token = parkingBoy.Park(car);
+
+            Assert.Same(car, moreAvailableStall.Pick(token));
+        }
+
+        [Fact]
+        public void should_park_in_high_available_stalls_when_parked_same_before_with_different_init()
+        {
+            var lessAvailableStalls = new Parkinglot(2);
+            lessAvailableStalls.Park(new Car());
+            var moreAvailableStall = new Parkinglot(3);
+            moreAvailableStall.Park(new Car());
+            var parkingBoy = ParkingBoy.CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+                lessAvailableStalls,
+                moreAvailableStall);
+            var car = new Car();
+
+            var token = parkingBoy.Park(car);
+
+            Assert.Same(car, moreAvailableStall.Pick(token));
+        }
+
+        [Fact]
+        public void should_park_in_high_available_stalls_when_parked_different_before_with_different_init()
+        {
+            var lessAvailableStalls = new Parkinglot(5);
+            lessAvailableStalls.Park(new Car());
+            lessAvailableStalls.Park(new Car());
+            lessAvailableStalls.Park(new Car());
+            var moreAvailableStall = new Parkinglot(4);
+            moreAvailableStall.Park(new Car());
+            var parkingBoy = ParkingBoy.CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+                lessAvailableStalls,
+                moreAvailableStall);
+            var car = new Car();
+
+            var token = parkingBoy.Park(car);
+
+            Assert.Same(car, moreAvailableStall.Pick(token));
+        }
+
+        [Fact]
         public void should_failed_pick_when_all_parkinglots_are_full()
         {
             var firstParkinglot = new Parkinglot(1);
