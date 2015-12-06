@@ -51,35 +51,5 @@ namespace OOParkingslot.Tests
 
             Assert.Null(parkinglot.Pick(parkingToken));
         }
-
-        [Fact]
-        public void should_vacancy_rate_be_1_when_no_cars_parked()
-        {
-            var parkinglot = new Parkinglot();
-
-            Assert.Equal(1, parkinglot.GetVacancyRate());
-        }
-
-        [Fact]
-        public void should_vacancy_rate_be_0_857_when_parkinglot_size_7_parked_1_car()
-        {
-            var parkinglot = new Parkinglot(7);
-
-            parkinglot.Park(new Car());
-
-            Assert.True(TwoDoubleData.Equal(0.857, parkinglot.GetVacancyRate(), 0.001));
-        }
-
-        [Fact]
-        public void should_vacancy_rate_be_0_9_when_parkinglot_size_10_parked_2_cars_first_then_picked_1_car
-            ()
-        {
-            var parkinglot = new Parkinglot(10);
-            parkinglot.Park(new Car());
-
-            parkinglot.Pick(parkinglot.Park(new Car()));
-
-            Assert.True(TwoDoubleData.Equal(0.9, parkinglot.GetVacancyRate(), 0.001));
-        }
     }
 }

@@ -31,12 +31,75 @@ namespace OOParkingslot.Tests
 
         [Fact]
         public void
-            should_parked_in_higher_vacancy_rate_parkinglot_when_two_parkinglot_with_different_vacancy_rate_0_8_and_0_9()
+            should_parked_in_higher_vacancy_rate_when_parked_different_before_with_same_init()
         {
-            var lowerVacancyRateParkinglot = new Parkinglot(10);
+            var lowerVacancyRateParkinglot = new Parkinglot(2);
             lowerVacancyRateParkinglot.Park(new Car());
             lowerVacancyRateParkinglot.Park(new Car());
-            var higherVacancyRateParkinglot = new Parkinglot(10);
+            var higherVacancyRateParkinglot = new Parkinglot(2);
+            higherVacancyRateParkinglot.Park(new Car());
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var car = new Car();
+
+            var parkingToken = superParkingBoy.Park(car);
+
+            Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
+        }
+
+        [Fact]
+        public void
+            should_parked_in_higher_vacancy_rate_when_parked_same_before_with_different_init()
+        {
+            var lowerVacancyRateParkinglot = new Parkinglot(2);
+            lowerVacancyRateParkinglot.Park(new Car());
+            lowerVacancyRateParkinglot.Park(new Car());
+            var higherVacancyRateParkinglot = new Parkinglot(3);
+            higherVacancyRateParkinglot.Park(new Car());
+            higherVacancyRateParkinglot.Park(new Car());
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var car = new Car();
+
+            var parkingToken = superParkingBoy.Park(car);
+
+            Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
+        }
+
+        [Fact]
+        public void
+            should_parked_in_higher_vacancy_rate_when_no_car_parked_before_with_different_init()
+        {
+            var higherVacancyRateParkinglot = new Parkinglot(2);
+            var lowerVacancyRateParkinglot = new Parkinglot(3);
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(higherVacancyRateParkinglot,lowerVacancyRateParkinglot);
+            var car = new Car();
+
+            var parkingToken = superParkingBoy.Park(car);
+
+            Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
+        }
+
+        [Fact]
+        public void
+            should_parked_in_higher_vacancy_rate_when_no_car_parked_before_with_same_init()
+        {
+            var lowerVacancyRateParkinglot = new Parkinglot(2);
+            var higherVacancyRateParkinglot = new Parkinglot(2);
+            var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(higherVacancyRateParkinglot, lowerVacancyRateParkinglot);
+            var car = new Car();
+
+            var parkingToken = superParkingBoy.Park(car);
+
+            Assert.Same(car, higherVacancyRateParkinglot.Pick(parkingToken));
+        }
+
+        [Fact]
+        public void
+            should_parked_in_higher_vacancy_rate_when_parked_different_before_with_different_init()
+        {
+            var lowerVacancyRateParkinglot = new Parkinglot(3);
+            lowerVacancyRateParkinglot.Park(new Car());
+            lowerVacancyRateParkinglot.Park(new Car());
+            var higherVacancyRateParkinglot = new Parkinglot(2);
             higherVacancyRateParkinglot.Park(new Car());
             var superParkingBoy = ParkingBoy.CreateSuperParkingBoyParkedCarInHigherVacancyRate(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
             var car = new Car();
