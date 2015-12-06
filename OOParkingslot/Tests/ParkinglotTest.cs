@@ -125,28 +125,5 @@ namespace OOParkingslot.Tests
 
             Assert.True(TwoDoubleData.Equal(0.9, parkinglot.GetVacancyRate(), 0.001));
         }
-
-        [Fact]
-        public void should_isfull_be_true_when_parkinglot_cannot_park()
-        {
-            var parkinglot = new Parkinglot(1);
-            parkinglot.Park(new Car());
-            var isFull = parkinglot.IsFull();
-
-            Assert.Null(parkinglot.Pick(parkinglot.Park(new Car())));
-            Assert.True(isFull);
-        }
-
-        [Fact]
-        public void should_isfull_be_false_when_parkinglot_can_park()
-        {
-            var parkinglot = new Parkinglot(2);
-            var isFull = parkinglot.IsFull();
-
-            var car = new Car();
-            Assert.Same(car, parkinglot.Pick(parkinglot.Park(car)));
-            
-            Assert.False(isFull);
-        }
     }
 }

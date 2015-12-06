@@ -41,9 +41,10 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_park_car_sequently()
+        public void should_park_car_sequently_when_first_parkinglot_is_full_and_second_not()
         {
-            var firstFullParkinglot = new Parkinglot(0);
+            var firstFullParkinglot = new Parkinglot(1);
+            firstFullParkinglot.Park(new Car());
             var secondNotFullParkinglot = new Parkinglot(1);
             var parkingBoy = ParkingBoy.CreateSequentParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
 
@@ -51,6 +52,20 @@ namespace OOParkingslot.Tests
             var parkingToken = parkingBoy.Park(car);
 
             Assert.Same(car, secondNotFullParkinglot.Pick(parkingToken));
+        }
+
+        [Fact]
+        public void should_park_car_sequently_when_first_is_not_full_and_second_is()
+        {
+            var firstFullParkinglot = new Parkinglot(1);
+            var secondNotFullParkinglot = new Parkinglot(1);
+            secondNotFullParkinglot.Park(new Car());
+            var parkingBoy = ParkingBoy.CreateSequentParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
+
+            var car = new Car();
+            var parkingToken = parkingBoy.Park(car);
+
+            Assert.Same(car, firstFullParkinglot.Pick(parkingToken));
         }
 
         [Fact]
