@@ -28,19 +28,19 @@
             return car;
         }
 
-        public static ParkingBoy CreateSequentParkingBoy(
+        public static ParkingBoy CreateParkingBoy(
             params Parkinglot[] parkinglots)
         {
             return new ParkingBoy(new SequentParking(), parkinglots);
         }
 
-        public static ParkingBoy CreateSmartParkingBoyParkedCarInMoreAvaibleStalls(
+        public static ParkingBoy CreateSmartParkingBoy(
             params Parkinglot[] parkinglots)
         {
             return new ParkingBoy(new MoreAvaibleStallsParking(), parkinglots);
         }
 
-        public static ParkingBoy CreateSuperParkingBoyParkedCarInHigherVacancyRate(
+        public static ParkingBoy CreateSuperParkingBoy(
             params Parkinglot[] parkinglots)
         {
             return new ParkingBoy(new HigherVacancyRateParking(), parkinglots);
