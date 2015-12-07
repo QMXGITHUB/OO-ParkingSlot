@@ -5,7 +5,7 @@
         private readonly Parkinglot[] parkinglots;
         private readonly IParkingPolicy parkingPolicy;
 
-        public ParkingBoy(IParkingPolicy parkingPolicy, Parkinglot[] parkinglots)
+        public ParkingBoy(IParkingPolicy parkingPolicy, params Parkinglot[] parkinglots)
         {
             this.parkingPolicy = parkingPolicy;
             this.parkinglots = parkinglots;
@@ -23,7 +23,7 @@
             foreach (var parkinglot in parkinglots)
             {
                 car = parkinglot.Pick(parkToken);
-                if (car == null) continue;
+                if (car != null)  break;
             }
             return car;
         }
