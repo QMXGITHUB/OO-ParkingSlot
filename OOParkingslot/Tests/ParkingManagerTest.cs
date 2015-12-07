@@ -5,7 +5,7 @@ namespace OOParkingslot.Tests
     public class ParkingManagerTest
     {
         [Fact]
-        public void should_park_in_parkinglot_with_no_parkingboy()
+        public void should_park_in_his_parkinglot()
         {
             var parkinglot = new Parkinglot();
             var parkingManager = new ParkingManager(parkinglot, new Parkinglot());
@@ -17,7 +17,7 @@ namespace OOParkingslot.Tests
         }
 
         [Fact]
-        public void should_pick_from_parkinglot_with_no_parkingboy()
+        public void should_pick_from_his_parkinglot()
         {
             var parkinglot = new Parkinglot(1);
             var parkingManager = new ParkingManager(parkinglot, new Parkinglot(1));
