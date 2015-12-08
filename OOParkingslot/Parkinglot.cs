@@ -3,13 +3,6 @@ using System.Collections.Generic;
 
 namespace OOParkingslot
 {
-    public interface IParkable
-    {
-        string Park(Car car);
-        Car Pick(string parkingToken);
-
-    }
-
     public class Parkinglot : IParkable
     {
         private readonly Dictionary<string, Car> garage = new Dictionary<string, Car>();

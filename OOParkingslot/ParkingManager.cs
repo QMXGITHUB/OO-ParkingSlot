@@ -1,41 +1,33 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms.VisualStyles;
 
 namespace OOParkingslot
 {
-    public class ParkingManager : ParkingBoy
+    public class ParkingManager 
     {
-        private readonly ParkingBoy[] parkingBoys;
+        IParkable[] parkables;
 
-        public ParkingManager(params Parkinglot[] parkinglots) : this(new ParkingBoy[0],parkinglots)
+        public ParkingManager(params IParkable[] iParkables) 
         {
+            parkables = iParkables;
         }
 
-        public ParkingManager(ParkingBoy[] parkingBoys, params Parkinglot[] parkinglots)
-            : base(new SequentParking(), parkinglots)
+        public string Park(Car car)
         {
-            this.parkingBoys = parkingBoys;
-        }
-
-        public new string Park(Car car)
-        {
-            var token = base.Park(car);
-            if (token != null) return token;
-            foreach (var parkingBoy in parkingBoys)
+            foreach (var parkable in parkables)
             {
-                token = parkingBoy.Park(car);
+                var token = parkable.Park(car);
                 if (token != null) return token;
             }
             return null;
-        }
+       }
 
-        public new Car Pick(string token)
+        public Car Pick(string token)
         {
-            var car = base.Pick(token);
-            if (car != null) return car;
-            foreach (var parkingBoy in parkingBoys)
+            foreach (var parkable in parkables)
             {
-                car = parkingBoy.Pick(token);
+                var car = parkable.Pick(token);
                 if (car != null) return car;
             }
             return null;
