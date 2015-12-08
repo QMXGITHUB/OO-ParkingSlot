@@ -1,6 +1,6 @@
 ﻿namespace OOParkingslot
 {
-    public class ParkingBoy
+    public class ParkingBoy: IParkable
     {
         private readonly Parkinglot[] parkinglots;
         private readonly IParkingPolicy parkingPolicy;
