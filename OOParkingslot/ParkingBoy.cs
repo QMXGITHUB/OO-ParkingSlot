@@ -1,4 +1,6 @@
-﻿namespace OOParkingslot
+﻿using System.Collections.Generic;
+
+namespace OOParkingslot
 {
     public class ParkingBoy: IParkable
     {
@@ -30,7 +32,9 @@
 
         public ReportModule[] GenerateData()
         {
-            return new ReportModule[]{};
+            var parkables = new List<IParkable>() {};
+            parkables.AddRange(parkinglots);
+            return ParkingManager.GenerateReportDatas(parkables.ToArray(), "B");
         }
 
         public static ParkingBoy CreateParkingBoy(

@@ -16,7 +16,7 @@ namespace OOParkingslot
         {
             var report = new StringBuilder();
             var reportdatas = parkingManager.GenerateReportData();
-            for (int i = reportdatas.Length-1; i >= 0 ; i--)
+            for (int i = 0; i < reportdatas.Length ; i++)
             {
                 var reportdata = reportdatas[i];
                 for(int j = 0; j < reportdata.Level; j++)

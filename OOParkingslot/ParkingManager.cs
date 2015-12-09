@@ -35,32 +35,37 @@ namespace OOParkingslot
 
         public ReportModule[] GenerateReportData()
         {
+            return GenerateReportDatas(parkables, "M");
+        }
+
+        public static ReportModule[] GenerateReportDatas(IParkable[] parkables, string style)
+        {
             var reportDatas = new List<ReportModule>();
-            var moduleForManager = new ReportModule()
+            var dataSummary = new ReportModule()
             {
                 AvailableStalls = 0,
                 CarsParked = 0,
                 Level = 0,
-                Style = "M"
+                Style = style
             };
             foreach (var parkable in parkables)
             {
-                var reportModules = parkable.GenerateData();
-                UpdateLevelInReportData(reportModules);
-                UpdateManageReportModule(moduleForManager, reportModules.Last());
-                reportDatas.AddRange(reportModules);
+                var innerData = parkable.GenerateData();
+                UpdateLevelFor(innerData);
+                UpdateSummaryData(dataSummary, innerData.First());
+                reportDatas.AddRange(innerData);
             }
-            reportDatas.Add(moduleForManager);
+            reportDatas.Insert(0, dataSummary);
             return reportDatas.ToArray();
         }
 
-        private void UpdateManageReportModule(ReportModule moduleForManager, ReportModule reportModule)
+        private static void UpdateSummaryData(ReportModule moduleForManager, ReportModule reportModule)
         {
             moduleForManager.AvailableStalls += reportModule.AvailableStalls;
             moduleForManager.CarsParked += reportModule.CarsParked;
         }
 
-        private void UpdateLevelInReportData(ReportModule[] reportModules)
+        private static void UpdateLevelFor(ReportModule[] reportModules)
         {
             foreach (var reportModule in reportModules)
             {
