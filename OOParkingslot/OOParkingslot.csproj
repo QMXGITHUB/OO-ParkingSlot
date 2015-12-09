@@ -66,11 +66,14 @@
     <Compile Include="IParkable.cs" />
     <Compile Include="ParkingBoy.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="ParkingDirector.cs" />
+    <Compile Include="ParkingDirectorTest.cs" />
     <Compile Include="Parkinglot.cs" />
     <Compile Include="IParkingPolicy.cs" />
     <Compile Include="ParkingManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportModule.cs" />
     <Compile Include="Tests\ParkingManagerTest.cs" />
     <Compile Include="Tools\TwoDoubleData.cs" />
     <Compile Include="Tests\ParkinglotTest.cs" />

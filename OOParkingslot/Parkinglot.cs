@@ -31,9 +31,23 @@ namespace OOParkingslot
             return car;
         }
 
+        public ReportModule[] GenerateData()
+        {
+            return new ReportModule[]
+            {
+                new ReportModule()
+                {
+                    AvailableStalls = GetAvailableStallsCount(),
+                    CarsParked = GetCarCountInGarage(),
+                    Level = 0,
+                    Style = "P"
+                }
+            };
+        }
+
         private bool ValidateParkingToken(string parkingToken)
         {
-            return parkingToken == null ||!garage.ContainsKey(parkingToken);
+            return parkingToken == null || !garage.ContainsKey(parkingToken);
         }
 
         public int GetAvailableStallsCount()
@@ -53,7 +67,7 @@ namespace OOParkingslot
 
         public double GetVacancyRate()
         {
-            return GetAvailableStallsCount()/(double)capacity;
+            return GetAvailableStallsCount() / (double) capacity;
         }
     }
 

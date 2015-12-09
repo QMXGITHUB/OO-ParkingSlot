@@ -28,6 +28,11 @@
             return car;
         }
 
+        public ReportModule[] GenerateData()
+        {
+            return new ReportModule[]{};
+        }
+
         public static ParkingBoy CreateParkingBoy(
             params Parkinglot[] parkinglots)
         {
