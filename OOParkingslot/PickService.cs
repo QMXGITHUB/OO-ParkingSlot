@@ -5,15 +5,14 @@ namespace OOParkingslot
 {
     public class PickService
     {
-        public static Car SequencePick(string value, List<Func<string, Car>> pickers)
+        public static Car SequencePick(string value, IParkable[] parkers)
         {
-            Car result = null;
-            foreach (var action in pickers)
+            foreach (var parkable in parkers)
             {
-                result = action(value);
-                if (result != null) break;
+                var result = parkable.Pick(value);
+                if (result != null) return result;
             }
-            return result;
+            return null;
         }
     }
 }

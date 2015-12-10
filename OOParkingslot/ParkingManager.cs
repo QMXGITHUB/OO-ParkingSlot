@@ -16,19 +16,12 @@ namespace OOParkingslot
 
         public string Park(Car car)
         {
-            var actions = parkables.Select(parkable => (Func<Car, String>)parkable.Park).ToList();
-            foreach (var action in actions)
-            {
-                var token = action(car);
-                if (token != null) return token;
-            }
-            return null;
+            return ParkService.SequencePark(car, parkables);
        }
 
         public Car Pick(string token)
         {
-            var pickers = parkables.Select(parkable => (Func<string, Car>) parkable.Pick).ToList();
-            return PickService.SequencePick(token, pickers);
+            return PickService.SequencePick(token, parkables);
         }
 
         public ReportData[] GenerateReportDatas()

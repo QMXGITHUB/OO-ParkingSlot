@@ -6,25 +6,23 @@ namespace OOParkingslot
 {
     public class ParkingBoy: IParkable
     {
-        private readonly Parkinglot[] parkinglots;
-        private readonly IParkingPolicy parkingPolicy;
+        private readonly IParkable[] parkinglots;
+        private readonly Func<Car,IParkable[], string> parkService; 
 
-        public ParkingBoy(IParkingPolicy parkingPolicy, params Parkinglot[] parkinglots)
+        public ParkingBoy(Func<Car,IParkable[], string> action, params Parkinglot[] parkinglots)
         {
-            this.parkingPolicy = parkingPolicy;
             this.parkinglots = parkinglots;
+            parkService = action;
         }
 
         public string Park(Car value)
         {
-            var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
-            return parkinglotFilter == null ? null : parkinglotFilter.Park(value);
+            return parkService(value, parkinglots);
         }
 
         public Car Pick(string token)
         {
-            var pickers = parkinglots.Select(parkable => (Func<string, Car>)parkable.Pick).ToList();
-            return PickService.SequencePick(token, pickers);
+            return PickService.SequencePick(token, parkinglots);
         }
 
         public ReportData[] GenerateReportDatas()
