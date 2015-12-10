@@ -4,7 +4,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace OOParkingslot
 {
-    public class ParkingManager 
+    public class ParkingManager:IParkable 
     {
         IParkable[] parkables;
 
@@ -31,11 +31,6 @@ namespace OOParkingslot
                 if (car != null) return car;
             }
             return null;
-        }
-
-        public ReportModule[] GenerateReportData()
-        {
-            return GenerateReportDatas(parkables, "M");
         }
 
         public static ReportModule[] GenerateReportDatas(IParkable[] parkables, string style)
@@ -71,6 +66,12 @@ namespace OOParkingslot
             {
                 reportModule.Level++;
             }
+        }
+
+
+        public ReportModule[] GenerateData()
+        {
+            return GenerateReportDatas(parkables, "M");
         }
     }
 }
