@@ -13,18 +13,18 @@ namespace OOParkingslot
             this.parkinglots = parkinglots;
         }
 
-        public string Park(Car car)
+        public string Park(Car value)
         {
             var parkinglotFilter = parkingPolicy.FindParkinglotToPark(parkinglots);
-            return parkinglotFilter == null ? null : parkinglotFilter.Park(car);
+            return parkinglotFilter == null ? null : parkinglotFilter.Park(value);
         }
 
-        public Car Pick(string token)
+        public Car Pick(string value)
         {
             Car car = null;
             foreach (var parkinglot in parkinglots)
             {
-                car = parkinglot.Pick(token);
+                car = parkinglot.Pick(value);
                 if (car != null)  break;
             }
             return car;

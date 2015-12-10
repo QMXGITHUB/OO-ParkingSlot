@@ -15,19 +15,19 @@ namespace OOParkingslot
 
         public Parkinglot() : this(20){}
 
-        public string Park(Car car)
+        public string Park(Car value)
         {
             if (IsFull()) return null;
             var parkingToken = ParkingToken.CreateParkingToken();
-            garage.Add(parkingToken, car);
+            garage.Add(parkingToken, value);
             return parkingToken;
         }
 
-        public Car Pick(string token)
+        public Car Pick(string value)
         {
-            if (ValidateParkingToken(token)) return null;
-            var car = garage[token];
-            garage.Remove(token);
+            if (ValidateParkingToken(value)) return null;
+            var car = garage[value];
+            garage.Remove(value);
             return car;
         }
 

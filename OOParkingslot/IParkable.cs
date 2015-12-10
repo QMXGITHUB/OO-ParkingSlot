@@ -2,8 +2,8 @@
 {
     public interface IParkable
     {
-        string Park(Car car);
-        Car Pick(string token);
+        string Park(Car value);
+        Car Pick(string value);
         ReportData[] GenerateReportDatas();
     }
 }

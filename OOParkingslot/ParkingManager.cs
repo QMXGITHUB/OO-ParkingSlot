@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms.VisualStyles;
 
@@ -13,22 +14,24 @@ namespace OOParkingslot
             parkables = iParkables;
         }
 
-        public string Park(Car car)
+        public string Park(Car value)
         {
-            foreach (var parkable in parkables)
+            var actions = parkables.Select(parkable => (Func<Car, String>)parkable.Park).ToList();
+            foreach (var action in actions)
             {
-                var token = parkable.Park(car);
-                if (token != null) return token;
+                var result = action(value);
+                if (value != null) return result;
             }
             return null;
        }
 
-        public Car Pick(string token)
+        public Car Pick(string value)
         {
-            foreach (var parkable in parkables)
+            var actions = parkables.Select(parkable => (Func<string, Car>) parkable.Pick).ToList();
+            foreach (var action in actions)
             {
-                var car = parkable.Pick(token);
-                if (car != null) return car;
+                var result = action(value);
+                if (result != null) return result;
             }
             return null;
         }
