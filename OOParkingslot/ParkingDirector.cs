@@ -6,7 +6,7 @@ namespace OOParkingslot
     public class ParkingDirector
     {
         private const string PrefixUnit = "  ";
-        private ParkingManager parkingManager;
+        private readonly ParkingManager parkingManager;
 
         public ParkingDirector(ParkingManager parkingManager)
         {
@@ -17,11 +17,13 @@ namespace OOParkingslot
         {
             var report = new StringBuilder();
             var reportdatas = parkingManager.GenerateData();
-            for (int i = 0; i < reportdatas.Length ; i++)
-            {
-                var reportdata = reportdatas[i];
-                report.Append(GeneratePrefixForEachLine(reportdata.Level));
-                report.Append(reportdata.Style+" "+reportdata.CarsParked+" "+reportdata.AvailableStalls+"\r\n");
+            foreach (var reportdata in reportdatas) {
+                report.AppendFormat(
+                    "{0}{1} {2} {3}\r\n",
+                    GeneratePrefixForEachLine(reportdata.Level),
+                    reportdata.Style,
+                    reportdata.CarsParked,
+                    reportdata.AvailableStalls);
             }
             return report.ToString();
         }
