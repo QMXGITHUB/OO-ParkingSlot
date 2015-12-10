@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OOParkingslot
 {
@@ -19,15 +21,10 @@ namespace OOParkingslot
             return parkinglotFilter == null ? null : parkinglotFilter.Park(value);
         }
 
-        public Car Pick(string value)
+        public Car Pick(string token)
         {
-            Car car = null;
-            foreach (var parkinglot in parkinglots)
-            {
-                car = parkinglot.Pick(value);
-                if (car != null)  break;
-            }
-            return car;
+            var pickers = parkinglots.Select(parkable => (Func<string, Car>)parkable.Pick).ToList();
+            return PickService.SequencePick(token, pickers);
         }
 
         public ReportData[] GenerateReportDatas()

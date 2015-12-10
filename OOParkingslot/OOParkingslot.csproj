@@ -71,6 +71,7 @@
     <Compile Include="Parkinglot.cs" />
     <Compile Include="IParkingPolicy.cs" />
     <Compile Include="ParkingManager.cs" />
+    <Compile Include="PickService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportData.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config">
       <SubType>Designer</SubType>
