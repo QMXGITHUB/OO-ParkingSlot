@@ -5,7 +5,6 @@
         string Park(Car car);
         Car Pick(string parkingToken);
 
-
         ReportModule[] GenerateData();
     }
 }

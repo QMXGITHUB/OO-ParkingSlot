@@ -1,6 +1,6 @@
-﻿using Xunit;
+using Xunit;
 
-namespace OOParkingslot
+namespace OOParkingslot.Tests
 {
     public class ParkingDirectorTest
     {

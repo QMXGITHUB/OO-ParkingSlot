@@ -12,7 +12,7 @@ namespace OOParkingslot
             this.parkingManager = parkingManager;
         }
 
-        internal string Report()
+        public string Report()
         {
             var report = new StringBuilder();
             var reportdatas = parkingManager.GenerateReportData();
