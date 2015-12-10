@@ -20,7 +20,7 @@ namespace OOParkingslot
             foreach (var reportdata in reportdatas) {
                 report.AppendFormat(
                     "{0}{1} {2} {3}\r\n",
-                    GeneratePrefixForEachLine(reportdata.Level),
+                    GeneratePrefix(reportdata.Level),
                     reportdata.Style,
                     reportdata.CarsParked,
                     reportdata.AvailableStalls);
@@ -28,7 +28,7 @@ namespace OOParkingslot
             return report.ToString();
         }
 
-        private static string GeneratePrefixForEachLine(int prefixCount)
+        private static string GeneratePrefix(int prefixCount)
         {
             var prefix = new StringBuilder();
             for (int j = 0; j < prefixCount; j++)

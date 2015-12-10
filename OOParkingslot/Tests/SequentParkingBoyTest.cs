@@ -8,7 +8,7 @@ namespace OOParkingslot.Tests
         public void should_pick_car_when_only_one_parkinglot_parked()
         {
             var parkinglot = new Parkinglot();
-            var parkingBoy = ParkingBoy.CreateParkingBoy(parkinglot);
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(parkinglot);
 
             var car = new Car();
             var parkToken = parkinglot.Park(car);
@@ -20,7 +20,7 @@ namespace OOParkingslot.Tests
         public void should_park_car_when_only_one_parkinglot()
         {
             var parkinglot = new Parkinglot();
-            var parkingBoy = ParkingBoy.CreateParkingBoy(parkinglot);
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(parkinglot);
 
             var car = new Car();
             var parkingToken = parkingBoy.Park(car);
@@ -32,7 +32,7 @@ namespace OOParkingslot.Tests
         public void should_pick_car_when_there_are_two_parkinglot_parked()
         {
             var parkinglot = new Parkinglot();
-            var parkingBoy = ParkingBoy.CreateParkingBoy(new Parkinglot(), parkinglot);
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(new Parkinglot(), parkinglot);
 
             var car = new Car();
             var parkingToken = parkinglot.Park(car);
@@ -46,7 +46,7 @@ namespace OOParkingslot.Tests
             var firstFullParkinglot = new Parkinglot(1);
             firstFullParkinglot.Park(new Car());
             var secondNotFullParkinglot = new Parkinglot(1);
-            var parkingBoy = ParkingBoy.CreateParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
 
             var car = new Car();
             var parkingToken = parkingBoy.Park(car);
@@ -60,7 +60,7 @@ namespace OOParkingslot.Tests
             var firstFullParkinglot = new Parkinglot(1);
             var secondNotFullParkinglot = new Parkinglot(1);
             secondNotFullParkinglot.Park(new Car());
-            var parkingBoy = ParkingBoy.CreateParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(firstFullParkinglot, secondNotFullParkinglot);
 
             var car = new Car();
             var parkingToken = parkingBoy.Park(car);
@@ -75,7 +75,7 @@ namespace OOParkingslot.Tests
             firstParkinglot.Park(new Car());
             var secondParkinglot = new Parkinglot(1);
             secondParkinglot.Park(new Car());
-            var parkingBoy = ParkingBoy.CreateParkingBoy(firstParkinglot);
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(firstParkinglot);
 
             var parkingToken = parkingBoy.Park(new Car());
 

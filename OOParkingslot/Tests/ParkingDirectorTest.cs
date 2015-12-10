@@ -34,7 +34,7 @@ namespace OOParkingslot.Tests
             should_print_report_when_manager_has_one_parkingboy_with_one_parklot()
         {
             var parkinglotWit1Car3Availiable = new Parkinglot(4);
-            var parkingDirector = new ParkingDirector(new ParkingManager(ParkingBoy.CreateParkingBoy(parkinglotWit1Car3Availiable)));
+            var parkingDirector = new ParkingDirector(new ParkingManager(ParkingBoyFactory.CreateParkingBoy(parkinglotWit1Car3Availiable)));
 
             parkinglotWit1Car3Availiable.Park(new Car());
 
@@ -47,7 +47,7 @@ namespace OOParkingslot.Tests
         {
             var parkinglotWith1Parked2Available = new Parkinglot(3);
             var parkinglotWith1Parked3Availible = new Parkinglot(4);
-            var parkingDirector = new ParkingDirector(new ParkingManager(ParkingBoy.CreateParkingBoy(parkinglotWith1Parked2Available, parkinglotWith1Parked3Availible)));
+            var parkingDirector = new ParkingDirector(new ParkingManager(ParkingBoyFactory.CreateParkingBoy(parkinglotWith1Parked2Available, parkinglotWith1Parked3Availible)));
 
             parkinglotWith1Parked2Available.Park(new Car());
             parkinglotWith1Parked3Availible.Park(new Car());
@@ -64,7 +64,7 @@ namespace OOParkingslot.Tests
             var parkingDirector = new ParkingDirector(
                 new ParkingManager(
                     new Parkinglot(3),
-                    ParkingBoy.CreateParkingBoy(parkinglotWith1Parked2Available, parkinglotWith1Parked3Availible),
+                    ParkingBoyFactory.CreateParkingBoy(parkinglotWith1Parked2Available, parkinglotWith1Parked3Availible),
                     new Parkinglot(4)
                     ));
 
@@ -80,11 +80,11 @@ namespace OOParkingslot.Tests
         {
             var parkinglotWith1Parked2Available = new Parkinglot(3);
             var parkinglotWith1Parked3Availible = new Parkinglot(4);
-            var smartParkingBoy = ParkingBoy.CreateSmartParkingBoy(new Parkinglot(3));
+            var smartParkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(new Parkinglot(3));
             var parkingDirector = new ParkingDirector(
                 new ParkingManager(
                     new Parkinglot(3),
-                    ParkingBoy.CreateParkingBoy(parkinglotWith1Parked2Available, parkinglotWith1Parked3Availible),
+                    ParkingBoyFactory.CreateParkingBoy(parkinglotWith1Parked2Available, parkinglotWith1Parked3Availible),
                     new Parkinglot(4),
                     smartParkingBoy
                     ));

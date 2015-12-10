@@ -19,12 +19,12 @@ namespace OOParkingslot
             return parkinglotFilter == null ? null : parkinglotFilter.Park(car);
         }
 
-        public Car Pick(string parkToken)
+        public Car Pick(string token)
         {
             Car car = null;
             foreach (var parkinglot in parkinglots)
             {
-                car = parkinglot.Pick(parkToken);
+                car = parkinglot.Pick(token);
                 if (car != null)  break;
             }
             return car;
@@ -35,24 +35,6 @@ namespace OOParkingslot
             var parkables = new List<IParkable>() {};
             parkables.AddRange(parkinglots);
             return ReportService.GenerateReportDatas(parkables.ToArray(), "B");
-        }
-
-        public static ParkingBoy CreateParkingBoy(
-            params Parkinglot[] parkinglots)
-        {
-            return new ParkingBoy(new SequentParking(), parkinglots);
-        }
-
-        public static ParkingBoy CreateSmartParkingBoy(
-            params Parkinglot[] parkinglots)
-        {
-            return new ParkingBoy(new MoreAvaibleStallsParking(), parkinglots);
-        }
-
-        public static ParkingBoy CreateSuperParkingBoy(
-            params Parkinglot[] parkinglots)
-        {
-            return new ParkingBoy(new HigherVacancyRateParking(), parkinglots);
         }
     }
 }

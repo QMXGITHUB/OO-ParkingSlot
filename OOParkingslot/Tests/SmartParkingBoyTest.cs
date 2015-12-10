@@ -8,7 +8,7 @@ namespace OOParkingslot.Tests
         public void should_park_when_there_is_only_one_parkinglot()
         {
             var parkinglot = new Parkinglot();
-            var smartParkingBoy = ParkingBoy.CreateSmartParkingBoy(parkinglot);
+            var smartParkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(parkinglot);
             var car = new Car();
 
             var parkingToken = smartParkingBoy.Park(car);
@@ -20,7 +20,7 @@ namespace OOParkingslot.Tests
         public void should_pick_the_car_when_only_one_parkninglot()
         {
             var parkinglot = new Parkinglot();
-            var smartParkingBoy = ParkingBoy.CreateSmartParkingBoy(parkinglot);
+            var smartParkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(parkinglot);
             var car = new Car();
 
             var parkingToken = parkinglot.Park(car);
@@ -33,7 +33,7 @@ namespace OOParkingslot.Tests
         public void should_pickup_the_car_when_mutiple_parkinglots()
         {
             var parkinglot = new Parkinglot();
-            var smartParkingBoy = ParkingBoy.CreateSmartParkingBoy(new Parkinglot(), parkinglot);
+            var smartParkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(new Parkinglot(), parkinglot);
             var car = new Car();
 
             var parkingToken = parkinglot.Park(car);
@@ -49,7 +49,7 @@ namespace OOParkingslot.Tests
             littleAvailableStallsParkinglot.Park(new Car());
             var moreAvailableStallsParkinglot = new Parkinglot(4);
             moreAvailableStallsParkinglot.Park(new Car());
-            var smartParkingBoy = ParkingBoy.CreateSmartParkingBoy(littleAvailableStallsParkinglot, moreAvailableStallsParkinglot);
+            var smartParkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(littleAvailableStallsParkinglot, moreAvailableStallsParkinglot);
             var car = new Car();
             
             var parkingToken = smartParkingBoy.Park(car);
@@ -61,7 +61,7 @@ namespace OOParkingslot.Tests
         public void should_park_in_high_available_stalls_when_no_car_parked_before_with_differet_init_count()
         {
             var moreAvailableStalls = new Parkinglot(2);
-            var parkingBoy = ParkingBoy.CreateSmartParkingBoy(
+            var parkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(
                 new Parkinglot(1),
                 moreAvailableStalls);
             var car = new Car();
@@ -75,7 +75,7 @@ namespace OOParkingslot.Tests
         public void should_park_in_high_available_stalls_when_no_car_parked_before_with_same_init()
         {
             var parkinglot = new Parkinglot(1);
-            var parkingBoy = ParkingBoy.CreateSmartParkingBoy(
+            var parkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(
                 parkinglot,
                 new Parkinglot(1));
             var car = new Car();
@@ -91,7 +91,7 @@ namespace OOParkingslot.Tests
             var lessAvailableStalls = new Parkinglot(2);
             lessAvailableStalls.Park(new Car());
             var moreAvailableStall = new Parkinglot(2);
-            var parkingBoy = ParkingBoy.CreateSmartParkingBoy(
+            var parkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(
                 lessAvailableStalls,
                 moreAvailableStall);
             var car = new Car();
@@ -108,7 +108,7 @@ namespace OOParkingslot.Tests
             lessAvailableStalls.Park(new Car());
             var moreAvailableStall = new Parkinglot(3);
             moreAvailableStall.Park(new Car());
-            var parkingBoy = ParkingBoy.CreateSmartParkingBoy(
+            var parkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(
                 lessAvailableStalls,
                 moreAvailableStall);
             var car = new Car();
@@ -127,7 +127,7 @@ namespace OOParkingslot.Tests
             lessAvailableStalls.Park(new Car());
             var moreAvailableStall = new Parkinglot(4);
             moreAvailableStall.Park(new Car());
-            var parkingBoy = ParkingBoy.CreateSmartParkingBoy(
+            var parkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(
                 lessAvailableStalls,
                 moreAvailableStall);
             var car = new Car();
@@ -144,7 +144,7 @@ namespace OOParkingslot.Tests
             firstParkinglot.Park(new Car());
             var secondParkinglot = new Parkinglot(1);
             secondParkinglot.Park(new Car());
-            var smartParkingBoy = ParkingBoy.CreateSmartParkingBoy(firstParkinglot, secondParkinglot);
+            var smartParkingBoy = ParkingBoyFactory.CreateSmartParkingBoy(firstParkinglot, secondParkinglot);
 
             var parkingToken = smartParkingBoy.Park(new Car());
 

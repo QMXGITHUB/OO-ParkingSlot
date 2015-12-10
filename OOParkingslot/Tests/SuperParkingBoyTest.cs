@@ -8,7 +8,7 @@ namespace OOParkingslot.Tests
         public void Should_pick_car_after_parked()
         {
             var car = new Car();
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(new Parkinglot());
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(new Parkinglot());
             var parkingToken = superParkingBoy.Park(car);
 
             Car carPick = superParkingBoy.Pick(parkingToken);
@@ -20,7 +20,7 @@ namespace OOParkingslot.Tests
         public void Should_pick_when_there_are_two_parkinglots()
         {
             var parkinglot = new Parkinglot();
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(new Parkinglot(), parkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(new Parkinglot(), parkinglot);
             var car = new Car();
             var parkingToken = parkinglot.Park(car);
 
@@ -38,7 +38,7 @@ namespace OOParkingslot.Tests
             lowerVacancyRateParkinglot.Park(new Car());
             var higherVacancyRateParkinglot = new Parkinglot(2);
             higherVacancyRateParkinglot.Park(new Car());
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
             var car = new Car();
 
             var parkingToken = superParkingBoy.Park(car);
@@ -56,7 +56,7 @@ namespace OOParkingslot.Tests
             var higherVacancyRateParkinglot = new Parkinglot(3);
             higherVacancyRateParkinglot.Park(new Car());
             higherVacancyRateParkinglot.Park(new Car());
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
             var car = new Car();
 
             var parkingToken = superParkingBoy.Park(car);
@@ -70,7 +70,7 @@ namespace OOParkingslot.Tests
         {
             var higherVacancyRateParkinglot = new Parkinglot(2);
             var lowerVacancyRateParkinglot = new Parkinglot(3);
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(higherVacancyRateParkinglot,lowerVacancyRateParkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(higherVacancyRateParkinglot,lowerVacancyRateParkinglot);
             var car = new Car();
 
             var parkingToken = superParkingBoy.Park(car);
@@ -84,7 +84,7 @@ namespace OOParkingslot.Tests
         {
             var lowerVacancyRateParkinglot = new Parkinglot(2);
             var higherVacancyRateParkinglot = new Parkinglot(2);
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(higherVacancyRateParkinglot, lowerVacancyRateParkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(higherVacancyRateParkinglot, lowerVacancyRateParkinglot);
             var car = new Car();
 
             var parkingToken = superParkingBoy.Park(car);
@@ -101,7 +101,7 @@ namespace OOParkingslot.Tests
             lowerVacancyRateParkinglot.Park(new Car());
             var higherVacancyRateParkinglot = new Parkinglot(2);
             higherVacancyRateParkinglot.Park(new Car());
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(lowerVacancyRateParkinglot, higherVacancyRateParkinglot);
             var car = new Car();
 
             var parkingToken = superParkingBoy.Park(car);
@@ -116,7 +116,7 @@ namespace OOParkingslot.Tests
             firstParkinglot.Park(new Car());
             var secondParkinglot = new Parkinglot(1);
             secondParkinglot.Park(new Car());
-            var superParkingBoy = ParkingBoy.CreateSuperParkingBoy(firstParkinglot, secondParkinglot);
+            var superParkingBoy = ParkingBoyFactory.CreateSuperParkingBoy(firstParkinglot, secondParkinglot);
 
             var parkingToken = superParkingBoy.Park(new Car());
 

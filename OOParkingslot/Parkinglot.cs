@@ -23,11 +23,11 @@ namespace OOParkingslot
             return parkingToken;
         }
 
-        public Car Pick(string parkingToken)
+        public Car Pick(string token)
         {
-            if (ValidateParkingToken(parkingToken)) return null;
-            var car = garage[parkingToken];
-            garage.Remove(parkingToken);
+            if (ValidateParkingToken(token)) return null;
+            var car = garage[token];
+            garage.Remove(token);
             return car;
         }
 

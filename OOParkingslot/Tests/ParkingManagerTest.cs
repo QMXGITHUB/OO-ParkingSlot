@@ -9,9 +9,9 @@ namespace OOParkingslot.Tests
         {
             var parkinglot = new Parkinglot();
             var parkingManager = new ParkingManager(
-                ParkingBoy.CreateParkingBoy(new Parkinglot(0)),
-                ParkingBoy.CreateSmartParkingBoy(new Parkinglot(0)),
-                ParkingBoy.CreateSuperParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSmartParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSuperParkingBoy(new Parkinglot(0)),
                 parkinglot);
             var car = new Car();
 
@@ -25,9 +25,9 @@ namespace OOParkingslot.Tests
         {
             var parkinglot = new Parkinglot(1);
             var parkingManager = new ParkingManager(
-                ParkingBoy.CreateParkingBoy(new Parkinglot(0)),
-                ParkingBoy.CreateSmartParkingBoy(new Parkinglot(0)),
-                ParkingBoy.CreateSuperParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSmartParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSuperParkingBoy(new Parkinglot(0)),
                 parkinglot);
             var car = new Car();
 
@@ -39,10 +39,10 @@ namespace OOParkingslot.Tests
         [Fact]
         public void should_parkingmanager_park_in_parkinglot_with_parkingboy()
         {
-            var parkingBoy = ParkingBoy.CreateParkingBoy(new Parkinglot());
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(new Parkinglot());
             var parkingManager = new ParkingManager(
-                ParkingBoy.CreateSmartParkingBoy(new Parkinglot(0)),
-                ParkingBoy.CreateSuperParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSmartParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSuperParkingBoy(new Parkinglot(0)),
                 parkingBoy,
                 new Parkinglot(0));
             var car = new Car();
@@ -55,11 +55,11 @@ namespace OOParkingslot.Tests
         [Fact]
         public void should_parkingManager_pick_when_parkingboy_parked()
         {
-            var parkingBoy = ParkingBoy.CreateParkingBoy(new Parkinglot());
+            var parkingBoy = ParkingBoyFactory.CreateParkingBoy(new Parkinglot());
             var parkingManager = new ParkingManager(
-                ParkingBoy.CreateSmartParkingBoy(new Parkinglot(0)),
+                ParkingBoyFactory.CreateSmartParkingBoy(new Parkinglot(0)),
                 parkingBoy,
-                ParkingBoy.CreateSuperParkingBoy(new Parkinglot()),
+                ParkingBoyFactory.CreateSuperParkingBoy(new Parkinglot()),
                 new Parkinglot());
             var car = new Car();
 

@@ -66,6 +66,7 @@
     <Compile Include="IParkable.cs" />
     <Compile Include="ParkingBoy.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="ParkingBoyFactory.cs" />
     <Compile Include="ParkingDirector.cs" />
     <Compile Include="Parkinglot.cs" />
     <Compile Include="IParkingPolicy.cs" />
