@@ -8,7 +8,7 @@ namespace OOParkingslot
         private readonly IParkable[] parkinglots;
         private readonly Func<Car, IParkable[], string> parkService;
 
-        public ParkingBoy(Func<Car, IParkable[], string> action, params Parkinglot[] parkinglots)
+        public ParkingBoy(Func<Car, IParkable[], string> action, params IParkable[] parkinglots)
         {
             this.parkinglots = parkinglots;
             parkService = action;

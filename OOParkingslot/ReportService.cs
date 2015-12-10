@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace OOParkingslot
 {
@@ -38,6 +40,37 @@ namespace OOParkingslot
             {
                 reportModule.Level++;
             }
+        }
+
+        private const string PrefixUnit = "  ";
+
+        public static string FormatEachLineInReport(ReportData reportdata)
+        {
+            return String.Format(
+                "{0}{1} {2} {3}\r\n", GeneratePrefix(reportdata.Level),
+                reportdata.Style,
+                reportdata.CarsParked,
+                reportdata.AvailableStalls);
+        }
+
+        public static string GeneratePrefix(int prefixCount)
+        {
+            var prefix = new StringBuilder();
+            for (var j = 0; j < prefixCount; j++)
+            {
+                prefix.Append(PrefixUnit);
+            }
+            return prefix.ToString();
+        }
+
+        public static string FormatReportDatas(ReportData[] reportdatas)
+        {
+            var report = new StringBuilder();
+            foreach (var reportdata in reportdatas)
+            {
+                report.Append(FormatEachLineInReport(reportdata));
+            }
+            return report.ToString();
         }
     }
 }

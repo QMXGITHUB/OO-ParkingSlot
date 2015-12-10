@@ -3,7 +3,7 @@
     public class ParkingBoyFactory
     {
         public static ParkingBoy CreateParkingBoy(
-            params Parkinglot[] parkinglots)
+            params IParkable[] parkinglots)
         {
             return new ParkingBoy(ParkService.SequencePark, parkinglots);
         }
