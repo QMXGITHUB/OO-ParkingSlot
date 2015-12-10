@@ -11,7 +11,7 @@
         public static ParkingBoy CreateSmartParkingBoy(
             params Parkinglot[] parkinglots)
         {
-            return new ParkingBoy(ParkService.HighAvailableStallsPark, parkinglots);
+            return new ParkingBoy(ParkService.MoreAvailableStallsPark, parkinglots);
         }
 
         public static ParkingBoy CreateSuperParkingBoy(

@@ -11,7 +11,7 @@ namespace OOParkingslot
                     .FirstOrDefault(token => token != null);
         }
 
-        public static string HighAvailableStallsPark(Car car, IParkable[] parkables)
+        public static string MoreAvailableStallsPark(Car car, IParkable[] parkables)
         {
             var parkinglotFilter =
                 ((Parkinglot[]) parkables).OrderByDescending(
