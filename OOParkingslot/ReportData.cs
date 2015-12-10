@@ -1,6 +1,6 @@
 ﻿namespace OOParkingslot
 {
-    public class ReportModule
+    public class ReportData
     {
         public int CarsParked { get; set; }
         public int AvailableStalls { get; set; }

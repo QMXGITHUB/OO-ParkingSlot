@@ -31,11 +31,11 @@ namespace OOParkingslot
             return car;
         }
 
-        public ReportModule[] GenerateData()
+        public ReportData[] GenerateData()
         {
-            return new ReportModule[]
+            return new ReportData[]
             {
-                new ReportModule()
+                new ReportData()
                 {
                     AvailableStalls = GetAvailableStallsCount(),
                     CarsParked = GetCarCountInGarage(),

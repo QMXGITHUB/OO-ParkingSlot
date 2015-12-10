@@ -26,7 +26,7 @@ namespace OOParkingslot
             return report.ToString();
         }
 
-        private static void AppendPrefixForEachLine(ReportModule reportdata, StringBuilder report)
+        private static void AppendPrefixForEachLine(ReportData reportdata, StringBuilder report)
         {
             for (int j = 0; j < reportdata.Level; j++)
             {

@@ -33,10 +33,10 @@ namespace OOParkingslot
             return null;
         }
 
-        public static ReportModule[] GenerateReportDatas(IParkable[] parkables, string style)
+        public static ReportData[] GenerateReportDatas(IParkable[] parkables, string style)
         {
-            var reportDatas = new List<ReportModule>();
-            var dataSummary = new ReportModule()
+            var reportDatas = new List<ReportData>();
+            var dataSummary = new ReportData()
             {
                 AvailableStalls = 0,
                 CarsParked = 0,
@@ -54,22 +54,21 @@ namespace OOParkingslot
             return reportDatas.ToArray();
         }
 
-        private static void UpdateSummaryData(ReportModule moduleForManager, ReportModule reportModule)
+        private static void UpdateSummaryData(ReportData dataForManager, ReportData reportData)
         {
-            moduleForManager.AvailableStalls += reportModule.AvailableStalls;
-            moduleForManager.CarsParked += reportModule.CarsParked;
+            dataForManager.AvailableStalls += reportData.AvailableStalls;
+            dataForManager.CarsParked += reportData.CarsParked;
         }
 
-        private static void UpdateLevelFor(ReportModule[] reportModules)
+        private static void UpdateLevelFor(ReportData[] reportDatas)
         {
-            foreach (var reportModule in reportModules)
+            foreach (var reportModule in reportDatas)
             {
                 reportModule.Level++;
             }
         }
 
-
-        public ReportModule[] GenerateData()
+        public ReportData[] GenerateData()
         {
             return GenerateReportDatas(parkables, "M");
         }

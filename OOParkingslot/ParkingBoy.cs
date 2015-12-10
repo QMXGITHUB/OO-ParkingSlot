@@ -30,7 +30,7 @@ namespace OOParkingslot
             return car;
         }
 
-        public ReportModule[] GenerateData()
+        public ReportData[] GenerateData()
         {
             var parkables = new List<IParkable>() {};
             parkables.AddRange(parkinglots);
