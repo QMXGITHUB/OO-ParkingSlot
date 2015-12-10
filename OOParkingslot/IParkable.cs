@@ -4,7 +4,6 @@
     {
         string Park(Car car);
         Car Pick(string parkingToken);
-
-        ReportData[] GenerateData();
+        ReportData[] GenerateReportDatas();
     }
 }

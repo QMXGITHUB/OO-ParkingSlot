@@ -31,7 +31,7 @@ namespace OOParkingslot
             return car;
         }
 
-        public ReportData[] GenerateData()
+        public ReportData[] GenerateReportDatas()
         {
             return new ReportData[]
             {

@@ -16,7 +16,7 @@ namespace OOParkingslot
         public string Report()
         {
             var report = new StringBuilder();
-            var reportdatas = parkingManager.GenerateData();
+            var reportdatas = parkingManager.GenerateReportDatas();
             foreach (var reportdata in reportdatas) {
                 report.AppendFormat(
                     "{0}{1} {2} {3}\r\n",
