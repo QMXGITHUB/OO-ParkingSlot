@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace OOParkingslot
 {
-    public class ParkingBoy: IParkable
+    public class ParkingBoy : IParkable
     {
         private readonly IParkable[] parkinglots;
-        private readonly Func<Car,IParkable[], string> parkService; 
+        private readonly Func<Car, IParkable[], string> parkService;
 
-        public ParkingBoy(Func<Car,IParkable[], string> action, params Parkinglot[] parkinglots)
+        public ParkingBoy(Func<Car, IParkable[], string> action, params Parkinglot[] parkinglots)
         {
             this.parkinglots = parkinglots;
             parkService = action;

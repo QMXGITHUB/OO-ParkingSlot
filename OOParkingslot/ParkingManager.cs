@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms.VisualStyles;
-
-namespace OOParkingslot
+﻿namespace OOParkingslot
 {
-    public class ParkingManager:IParkable 
+    public class ParkingManager : IParkable
     {
         IParkable[] parkables;
 
-        public ParkingManager(params IParkable[] iParkables) 
+        public ParkingManager(params IParkable[] iParkables)
         {
             parkables = iParkables;
         }
@@ -17,7 +12,7 @@ namespace OOParkingslot
         public string Park(Car car)
         {
             return ParkService.SequencePark(car, parkables);
-       }
+        }
 
         public Car Pick(string token)
         {
