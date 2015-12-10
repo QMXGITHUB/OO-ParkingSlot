@@ -20,18 +20,20 @@ namespace OOParkingslot
             for (int i = 0; i < reportdatas.Length ; i++)
             {
                 var reportdata = reportdatas[i];
-                AppendPrefixForEachLine(reportdata, report);
+                report.Append(GeneratePrefixForEachLine(reportdata.Level));
                 report.Append(reportdata.Style+" "+reportdata.CarsParked+" "+reportdata.AvailableStalls+"\r\n");
             }
             return report.ToString();
         }
 
-        private static void AppendPrefixForEachLine(ReportData reportdata, StringBuilder report)
+        private static string GeneratePrefixForEachLine(int prefixCount)
         {
-            for (int j = 0; j < reportdata.Level; j++)
+            var prefix = new StringBuilder();
+            for (int j = 0; j < prefixCount; j++)
             {
-                report.Append(PrefixUnit);
+                prefix.Append(PrefixUnit);
             }
+            return prefix.ToString();
         }
     }
 }
